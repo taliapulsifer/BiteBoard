@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-biteboard-dev-162303-authRole",
+      "UnauthRoleArn": "arn:aws:iam::891377074475:role/amplify-biteboard-dev-162303-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::891377074475:role/amplify-biteboard-dev-162303-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-biteboard-dev-162303-deployment",
+      "UnauthRoleName": "amplify-biteboard-dev-162303-unauthRole",
+      "StackName": "amplify-biteboard-dev-162303",
+      "StackId": "arn:aws:cloudformation:us-east-1:891377074475:stack/amplify-biteboard-dev-162303/5e811090-e892-11ee-89d3-0affdfcf2951",
+      "AmplifyAppId": "dueah784s00kf"
+    }
+  }
+}
