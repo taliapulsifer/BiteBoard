@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
 import RestaurantDetail from './RestaurantDetail';
-
-const colors = {
-    primary: 'magenta', // magenta color for primary actions
-    background: '#ffffff',
-    text: 'black',
-    tagBackground: '#f0f0f0',
-  };
+import colors from '../../components/colors';
+import CustomText from '../../components/customText';
 
 const RestaurantProfile = () => {
 
@@ -31,51 +26,53 @@ const RestaurantProfile = () => {
                 <View style={styles.whiteBackground}>
                     <View style={styles.headerContainer}>
                         <View style={styles.titleContainer}>
-                            <Text style={styles.restaurantText}>K-BOP</Text>
+                            <CustomText style={styles.restaurantText}>K-BOP</CustomText>
+                        </View>
+                        <View style={styles.titleIconsContainer}>
                             <TouchableOpacity onPress={toggleBookmark} >
-                                <FontAwesome name={bookmarked ? 'bookmark' : 'bookmark-o'} size={24} color={bookmarked ? 'magenta' : 'black'} />
+                                <FontAwesome name={bookmarked ? 'bookmark' : 'bookmark-o'} size={40} color={bookmarked ? colors.accentSecondary : 'black'} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={toggleAdd}>
-                                <FontAwesome name={added ? 'check' : 'plus'} size={24} color={added ? 'magenta' : 'black'} />                            
+                                <FontAwesome name={added ? 'check' : 'plus'} size={40} color={added ? colors.accentSecondary : 'black'} />                            
                             </TouchableOpacity>
                         </View>
                         <View style={styles.navBarContainer}>
-                            <TouchableOpacity><Text style={styles.navBarText}>Overview</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={styles.navBarText}>Photos</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={styles.navBarText}>Reviews</Text></TouchableOpacity>
+                            <TouchableOpacity><CustomText style={styles.navBarText}>Overview</CustomText></TouchableOpacity>
+                            <TouchableOpacity><CustomText style={styles.navBarText}>Photos</CustomText></TouchableOpacity>
+                            <TouchableOpacity><CustomText style={styles.navBarText}>Reviews</CustomText></TouchableOpacity>
                         </View>
                     </View>
                 </View>
                 <View style={styles.categoryRow}>
                     <View style={styles.categoryContainer}>
-                        <Text style={styles.categoryTitle}>Rating</Text>
-                        <Text style={styles.categoryInfo}>4.5 ★★★★☆</Text>
+                        <CustomText style={styles.categoryTitle}>Rating</CustomText>
+                        <CustomText style={styles.categoryInfo}>4.5 ★★★★☆</CustomText>
                     </View>
                     <View style={styles.categoryContainer}>
-                        <Text style={styles.categoryTitle}>Price</Text>
-                        <Text style={styles.categoryInfo}>$10-20</Text>
+                        <CustomText style={styles.categoryTitle}>Price</CustomText>
+                        <CustomText style={styles.categoryInfo}>$10-20</CustomText>
                     </View>
                 </View>
                 <View style={styles.categoryRow}>
                     <View style={styles.categoryContainer}>
-                        <Text style={styles.categoryTitle}>Cuisine</Text>
-                        <Text style={styles.categoryInfo}>Korean</Text>
+                        <CustomText style={styles.categoryTitle}>Cuisine</CustomText>
+                        <CustomText style={styles.categoryInfo}>Korean</CustomText>
                     </View>
                     <View style={styles.categoryContainer}>
-                        <Text style={styles.categoryTitle}>Vibe</Text>
-                        <Text style={styles.categoryInfo}>Casual</Text>
+                        <CustomText style={styles.categoryTitle}>Vibe</CustomText>
+                        <CustomText style={styles.categoryInfo}>Casual</CustomText>
                     </View>
                 </View>
                 <View style={styles.tagSection}>
-                    <View style={styles.tagSectionTitle}><Text style={styles.navBarText}>Dietary Options</Text></View>
+                    <View style={styles.tagSectionTitle}><CustomText style={styles.navBarText}>Dietary Options</CustomText></View>
                     <View style={styles.tagRow}>
-                        <Text style={styles.dietTag}>Vegetarian</Text>
-                        <Text style={styles.dietTag}>Vegan</Text>
-                        <Text style={styles.dietTag}>Gluten Free</Text>
+                        <CustomText style={styles.dietTag}>Vegetarian</CustomText>
+                        <CustomText style={styles.dietTag}>Vegan</CustomText>
+                        <CustomText style={styles.dietTag}>Gluten Free</CustomText>
                     </View>
-                    <View style={styles.tagSectionTitle}><Text style={styles.navBarText}>Accessibility</Text></View>
+                    <View style={styles.tagSectionTitle}><CustomText style={styles.navBarText}>Accessibility</CustomText></View>
                     <View style={styles.tagRow}>
-                        <Text style={styles.accessibilityTag}>Wheelchair ramp</Text>
+                        <CustomText style={styles.accessibilityTag}>Wheelchair ramp</CustomText>
                     </View>
                 </View>
                 <View style={styles.detailSection}>
@@ -102,14 +99,22 @@ const styles = StyleSheet.create({
     },
     titleContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 20,
+        marginBottom: 10,
         
     },
+    titleIconsContainer: {
+        flexDirection: 'row',
+        alignContent: 'center',
+        justifyContent: 'center',
+        gap: 40,
+        marginBottom: 20
+
+    }, 
     restaurantText: {
         fontWeight: 'bold',
-        fontSize: 24,
+        fontSize: 25,
         paddingVertical: 10,
         color: colors.text,
     },
@@ -121,7 +126,7 @@ const styles = StyleSheet.create({
     navBarText: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: colors.text,
+        color: colors.textPrimary,
     },
     categoryRow: {
         flexDirection: 'row',
@@ -143,14 +148,14 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     categoryTitle: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: '600',
-        color: colors.text,
+        color: colors.textPrimary,
         marginBottom: 5,
     },
     categoryInfo: {
         fontSize: 18,
-        color: colors.text,
+        color: colors.textPrimary,
     },
     tagRow: {
         marginHorizontal: 20,
@@ -162,7 +167,7 @@ const styles = StyleSheet.create({
     dietTag: {
         fontSize: 20,
         color: 'white',
-        backgroundColor: 'magenta',
+        backgroundColor: colors.accentPrimary,
         borderRadius: 15,
         paddingVertical: 5,
         paddingHorizontal: 10,
@@ -171,7 +176,7 @@ const styles = StyleSheet.create({
     accessibilityTag: {
         fontSize: 20,
         color: 'white',
-        backgroundColor: 'teal',
+        backgroundColor: colors.accentSecondary,
         borderRadius: 15,
         paddingVertical: 5,
         paddingHorizontal: 10,

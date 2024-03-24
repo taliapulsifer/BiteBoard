@@ -2,16 +2,8 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
-
-const colors = {
-  background: '#fff',
-  textPrimary: '#000',
-  textSecondary: 'grey',
-  textTertiary: '#333',
-  iconLiked: 'magenta',
-  iconUnliked: 'black',
-  shadow: '#000',
-};
+import colors from './colors'
+import CustomText from './customText'; // Adjust the import path as necessary
 
 const Post = ({ user, restaurant, category, review, imageUri, profilePicUri }) => {
   const [liked, setLiked] = useState(false);
@@ -30,22 +22,25 @@ const Post = ({ user, restaurant, category, review, imageUri, profilePicUri }) =
     <View style={styles.container}>
       <View style={styles.header}>
         <Image source={{ uri: profilePicUri }} style={styles.profilePic} />
-        <Text style={styles.username}>{user}</Text>
+        <CustomText style={styles.username}>{user}</CustomText>
       </View>
       <Image source={{ uri: imageUri }} style={styles.image} />
       <View style={styles.content}>
         <TouchableOpacity onPress={() => navigation.navigate('Retaurant', { restaurantName: restaurant })}>
-          <Text style={styles.restaurant}>{restaurant.toUpperCase()}</Text>
+        <View style={styles.restaurantContainer}>
+        <FontAwesome name={'map-marker'} size={24} color={colors.textPrimary} />
+          <CustomText style={styles.restaurant}>{restaurant.toUpperCase()}</CustomText>
+        </View>
+        <CustomText style={styles.category}>{category}</CustomText>
         </TouchableOpacity>
-        <Text style={styles.category}>{category}</Text>
-        <Text style={styles.review}>{review}</Text>
+        <CustomText style={styles.review}>{review}</CustomText>
       </View>
       <View style={styles.actionContainer}>
         <TouchableOpacity onPress={toggleBookmark} style={styles.bookmarkButton}>
-          <FontAwesome name={bookmarked ? 'bookmark' : 'bookmark-o'} size={24} color={bookmarked ? 'magenta' : 'black'} />
+          <FontAwesome name={bookmarked ? 'bookmark' : 'bookmark-o'} size={24} color={bookmarked ? colors.accentSecondary : 'black'} />
         </TouchableOpacity>
         <TouchableOpacity onPress={toggleLike} style={styles.likeButton}>
-          <FontAwesome name={liked ? 'heart' : 'heart-o'} size={24} color={liked ? 'magenta' : 'black'} />
+          <FontAwesome name={liked ? 'heart' : 'heart-o'} size={24} color={liked ? colors.accentSecondary : 'black'} />
         </TouchableOpacity>
       </View>
     </View>
@@ -90,6 +85,12 @@ const styles = StyleSheet.create({
   content: {
     padding: 15,
   },
+  restaurantContainer: {
+    alignContent: 'flex-start',
+    flexDirection: 'row',
+    gap: 10,
+
+  },
   restaurant: {
     fontWeight: 'bold',
     color: colors.textPrimary,
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   },
   review: {
     fontSize: 15,
-    color: colors.textTertiary,
+    color: colors.textPrimary,
   },
   likeButton: {
     paddingHorizontal: 15,

@@ -1,18 +1,20 @@
 // ProfileHeader.js
 
 import React from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
+import colors from './colors';
+import CustomText from './customText';
 
-const ProfileHeader = ({ name, reviews, eats, updates }) => (
+const ProfileHeader = ({ name, reviews, eats }) => (
   <View style={styles.headerContainer}>
     <Image style={styles.profilePicture} source={{ uri: 'profile_picture_url' }} />
-    <Text style={styles.nameText}>{name}</Text>
+    <CustomText style={styles.nameText}>{name}</CustomText>
     <View style={styles.statsContainer}>
-      <Text style={styles.statsText}>{reviews} Reviews</Text>
-      <Text style={styles.statsText}>{eats} Eats</Text>
+      <CustomText style={styles.statsText}>{reviews} Reviews</CustomText>
+      <CustomText style={styles.statsText}>{eats} Eats</CustomText>
     </View>
     <TouchableOpacity style={styles.friendButton}>
-      <Text style={styles.friendButtonText}>FOLLOW</Text>
+      <CustomText style={styles.friendButtonText}>FOLLOW</CustomText>
     </TouchableOpacity>
   </View>
 );
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: '#f9c2ff',
+    backgroundColor: colors.accentTertiary,
     marginBottom: 10,
   },
   nameText: {
@@ -42,16 +44,14 @@ const styles = StyleSheet.create({
   },
   statsText: {
     fontSize: 16,
-    fontWeight: 'bold',
   },
   friendButton: {
-    backgroundColor: 'magenta',
+    backgroundColor: colors.accentSecondary,
     padding: 10,
     borderRadius: 5,
   },
   friendButtonText: {
     color: 'white',
-    fontWeight: 'bold',
   },
 });
 

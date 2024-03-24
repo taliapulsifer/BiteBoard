@@ -1,22 +1,15 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
-
-const colors = {
-    primary: 'magenta', // magenta color for primary actions
-    background: '#ffffff',
-    text: '#333333',
-    divider: '#E0E0E0',
-    tagBackground: '#f0f0f0',
-  };
+import colors from '../../components/colors';
+import CustomText from '../../components/customText';
 
 const RestaurantDetail = ({ iconName, children }) => {
     return (
       <View style={styles.detailItem}>
-            <FontAwesome name={iconName} size={24} color={colors.text} style={styles.detailIcon} />
-
+            <FontAwesome name={iconName} size={24} color={colors.textPrimary} style={styles.detailIcon} />
       <View style={styles.detailTextContainer}>
-        <Text style={styles.detailText}>{children}</Text>
+        <CustomText style={styles.detailText}>{children}</CustomText>
       </View>
       </View>
     );
@@ -40,14 +33,15 @@ const RestaurantDetail = ({ iconName, children }) => {
     },
     detailIcon: {
       marginRight: 10,
+      color: colors.accentSecondary,
     },
     detailTextContainer: {
       marginLeft: 10,
       marginRight: 5,
     },
     detailText: {
-      fontSize: 16,
-      color: colors.text,
+      fontSize: 18,
+      color: colors.textPrimary,
     },
   });
 

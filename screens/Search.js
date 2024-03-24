@@ -1,6 +1,8 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, TextInput, TouchableOpacity, Text, Image } from 'react-native';
+import { ScrollView, StyleSheet, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from '../components/colors';
+import CustomText from '../components/customText';
 
 export default function Feed() {
   return (
@@ -25,19 +27,19 @@ export default function Feed() {
       
       {/* Placeholder for restaurant card */}
       <View style={styles.card}>
-        <Text style={styles.categoryHeader}>KOREAN</Text>
+        <CustomText style={styles.categoryHeader}>KOREAN</CustomText>
         <Image style={styles.restaurantImage} source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }} />
         {/* Other details for the restaurant */}
-        <Text style={styles.restaurantName}>KBOP</Text>
+        <CustomText style={styles.restaurantName}>KBOP</CustomText>
         <View style={styles.ratingAndTags}>
-          <Text style={styles.infoTag}>Open</Text>
-          <Text style={styles.infoTag}>Korean</Text>
-          <Text style={styles.infoTag}> 4.5 ★★★★☆</Text>
-          <Text style={styles.infoTag}>$$</Text>
-          <Text style={styles.dietTag}>Vegetarian</Text>
-          <Text style={styles.dietTag}>Vegan</Text>
-          <Text style={styles.dietTag}>Gluten Free</Text>
-          <Text style={styles.accessibilityTag}>Wheelchair Ramp</Text>
+          <CustomText style={styles.infoTag}>Open</CustomText>
+          <CustomText style={styles.infoTag}>Korean</CustomText>
+          <CustomText style={styles.infoTag}> 4.5 ★★★★☆</CustomText>
+          <CustomText style={styles.infoTag}>$$</CustomText>
+          <CustomText style={styles.dietTag}>Vegetarian</CustomText>
+          <CustomText style={styles.dietTag}>Vegan</CustomText>
+          <CustomText style={styles.dietTag}>Gluten Free</CustomText>
+          <CustomText style={styles.accessibilityTag}>Wheelchair Ramp</CustomText>
         </View>
       </View>
       
@@ -119,40 +121,36 @@ const styles = StyleSheet.create({
   ratingAndTags: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'center', // Center tags horizontally for better alignment
     width: '100%',
-    flexWrap: 'wrap',
-  },
-  rating: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    margin: 5,
+    flexWrap: 'wrap', // Allow tags to wrap to the next line
+    marginTop: 10, // Add some space above the tags section
   },
   infoTag: {
-    fontSize: 20,
-    color: 'white',
-    backgroundColor: 'blue',
+    fontSize: 16, // Adjusted for better space management
+    color: colors.textPrimary,
+    backgroundColor: colors.accentTertiary,
     borderRadius: 15,
     paddingVertical: 5,
     paddingHorizontal: 10,
-    margin: 5,
+    margin: 5, // Ensure there's space around each tag
   },
   dietTag: {
-      fontSize: 20,
-      color: 'white',
-      backgroundColor: 'magenta',
-      borderRadius: 15,
-      paddingVertical: 5,
-      paddingHorizontal: 10,
-      margin: 5,
+    fontSize: 16, // Adjusted for consistency
+    color: 'white',
+    backgroundColor: colors.accentSecondary,
+    borderRadius: 15,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    margin: 5, // Consistent margin for visual balance
   },
   accessibilityTag: {
-      fontSize: 20,
-      color: 'white',
-      backgroundColor: 'teal',
-      borderRadius: 15,
-      paddingVertical: 5,
-      paddingHorizontal: 10,
-      margin: 5,
+    fontSize: 16, // Adjusted for consistency
+    color: 'white',
+    backgroundColor: colors.accentPrimary,
+    borderRadius: 15,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    margin: 5, // Consistent margin for visual balance
   },
 });

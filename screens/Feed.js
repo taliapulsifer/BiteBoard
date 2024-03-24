@@ -1,5 +1,6 @@
 import { ScrollView, View } from 'react-native';
 import Post from '../components/Post'
+import CustomText from '../components/customText';
 
 export default function Feed() {
   return (

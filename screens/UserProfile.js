@@ -1,6 +1,7 @@
 import React from 'react';
 import Post from '../components/Post';
 import ProfileHeader from '../components/ProfileHeader';
+import CustomText from '../components/customText';
 import { SafeAreaView, ScrollView, View } from 'react-native';
 
 const UserProfile = () => {
@@ -24,7 +25,7 @@ const UserProfile = () => {
         <Post
           user="OLIVIA"
           restaurant="KBOP"
-          category="KOREAN • VEGAN • CASUAL • $$"
+          category="KOREAN • $$ • CASUAL"
           review="Loved the vegetarian dumplings! Definitely a must try here."
           imageUri="https://reactnative.dev/img/tiny_logo.png"
           profilePicUri="https://reactnative.dev/img/tiny_logo.png"
