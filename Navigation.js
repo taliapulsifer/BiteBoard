@@ -1,7 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from "@expo/vector-icons";
+import { Octicons } from '@expo/vector-icons';
+import Colors from './components/colors.js';
 import { Feed, RestaurantProfile, Search, UserProfile } from './screens/index.js'; // Import all screens from index.js
 
 
@@ -28,6 +29,8 @@ function SearchStackGroup() {
     return (
         <SearchStack.Navigator screenOptions={{ headerShown: false }}>
             <SearchStack.Screen name="SearchHome" component={Search} options={{ title: 'Search' }} />
+            <SearchStack.Screen name="Retaurant" component={RestaurantProfile} />
+
         </SearchStack.Navigator>
     );
 }
@@ -71,10 +74,11 @@ function TabGroup() {
                 name='Feed' 
                 component={FeedStackGroup}
                 options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Ionicons 
-                            name={focused ? "home" : "home-outline"} 
-                            size={24} 
+                    tabBarIcon: () => (
+                        <Octicons 
+                            name={"home"} 
+                            size={26} 
+                            color={"black"}
                         />
                     )
                 }}
@@ -83,20 +87,26 @@ function TabGroup() {
                 name="Search" 
                 component={SearchStackGroup}
                 options={{
-                    tabBarIcon: () => {
-                        return <Ionicons name={"search-sharp"} 
-                        size={24}
-                        />}
-                    }}
-                />
-                        <Tab.Screen 
-            name="UserProfile" 
-            component={UserStackGroup}
-            options={{
-                tabBarIcon: ({focused}) => {
-                    return <Ionicons name={focused ? "person" : "person-outline"} 
-                    size={24}
-                    />}
+                    tabBarIcon: () => (
+                        <Octicons 
+                            name="search" 
+                            size={26}
+                            color={"black"} 
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen 
+                name="UserProfile" 
+                component={UserStackGroup}
+                options={{
+                    tabBarIcon: () => (
+                        <Octicons 
+                            name={"person"} // Use "person" for both focused and unfocused
+                            size={26}
+                            color={"black"} // Change colors accordingly
+                        />
+                    )
                 }}
             />
         </Tab.Navigator>

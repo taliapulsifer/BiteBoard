@@ -14,8 +14,8 @@ const RestaurantProfile = () => {
       setBookmarked(!bookmarked); // This toggles the state
     };
 
+    // add JS
     const [added, setAdded] = useState(false); // This should be inside the component
-  
     const toggleAdd = () => {
       setAdded(!added); // This toggles the state
     };
@@ -33,7 +33,7 @@ const RestaurantProfile = () => {
                                 <FontAwesome name={bookmarked ? 'bookmark' : 'bookmark-o'} size={40} color={bookmarked ? colors.accentSecondary : 'black'} />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={toggleAdd}>
-                                <FontAwesome name={added ? 'check' : 'plus'} size={40} color={added ? colors.accentSecondary : 'black'} />                            
+                                <FontAwesome name={added ? 'check' : 'plus-circle'} size={40} color={added ? colors.accentSecondary : 'black'} />                            
                             </TouchableOpacity>
                         </View>
                         <View style={styles.navBarContainer}>
@@ -76,8 +76,8 @@ const RestaurantProfile = () => {
                     </View>
                 </View>
                 <View style={styles.detailSection}>
-                    <RestaurantDetail iconName="map-marker">{`301 N Guadalupe St Ste 164, San Marcos, TX 78666`}</RestaurantDetail>
-                    <RestaurantDetail iconName="clock-o">{`Open · Closes 9:30 PM`}</RestaurantDetail>
+                    <RestaurantDetail iconName="location">{`301 N Guadalupe St Ste 164, San Marcos, TX 78666`}</RestaurantDetail>
+                    <RestaurantDetail iconName="clock">{`Open · Closes 9:30 PM`}</RestaurantDetail>
                     <RestaurantDetail iconName="globe">{`http://kbopstx.com/`}</RestaurantDetail>
                 </View>
             </ScrollView>
@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
 
     }, 
     restaurantText: {
-        fontWeight: 'bold',
         fontSize: 25,
         paddingVertical: 10,
         color: colors.text,
@@ -125,7 +124,6 @@ const styles = StyleSheet.create({
         },
     navBarText: {
         fontSize: 20,
-        fontWeight: 'bold',
         color: colors.textPrimary,
     },
     categoryRow: {
@@ -186,7 +184,6 @@ const styles = StyleSheet.create({
         marginLeft: 20, // Align with the tagRow's margin
         marginBottom: 10, // Space before the tags start
         fontSize: 20,
-        fontWeight: 'bold',
         color: colors.text,
     },
     tagSection: {

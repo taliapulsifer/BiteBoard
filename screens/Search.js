@@ -3,8 +3,12 @@ import { ScrollView, StyleSheet, View, TextInput, TouchableOpacity, Image } from
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../components/colors';
 import CustomText from '../components/customText';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Feed() {
+export default function Search() {
+
+  const navigation = useNavigation();
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.searchSection}>
@@ -27,20 +31,21 @@ export default function Feed() {
       
       {/* Placeholder for restaurant card */}
       <View style={styles.card}>
-        <CustomText style={styles.categoryHeader}>KOREAN</CustomText>
-        <Image style={styles.restaurantImage} source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }} />
-        {/* Other details for the restaurant */}
-        <CustomText style={styles.restaurantName}>KBOP</CustomText>
-        <View style={styles.ratingAndTags}>
-          <CustomText style={styles.infoTag}>Open</CustomText>
-          <CustomText style={styles.infoTag}>Korean</CustomText>
-          <CustomText style={styles.infoTag}> 4.5 ★★★★☆</CustomText>
-          <CustomText style={styles.infoTag}>$$</CustomText>
-          <CustomText style={styles.dietTag}>Vegetarian</CustomText>
-          <CustomText style={styles.dietTag}>Vegan</CustomText>
-          <CustomText style={styles.dietTag}>Gluten Free</CustomText>
-          <CustomText style={styles.accessibilityTag}>Wheelchair Ramp</CustomText>
-        </View>
+      <CustomText style={styles.categoryHeader}>KOREAN</CustomText>
+      <Image style={styles.restaurantImage} source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }} />
+      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate('Retaurant')}>        
+      <CustomText style={styles.restaurantName}>KBOP</CustomText>
+          <View style={styles.ratingAndTags}>
+            <CustomText style={styles.infoTag}>Open</CustomText>
+            <CustomText style={styles.infoTag}>Korean</CustomText>
+            <CustomText style={styles.infoTag}> 4.5 ★★★★☆</CustomText>
+            <CustomText style={styles.infoTag}>$$</CustomText>
+            <CustomText style={styles.dietTag}>Vegetarian</CustomText>
+            <CustomText style={styles.dietTag}>Vegan</CustomText>
+            <CustomText style={styles.dietTag}>Gluten Free</CustomText>
+            <CustomText style={styles.accessibilityTag}>Wheelchair Ramp</CustomText>
+          </View>
+        </TouchableOpacity>
       </View>
       
       {/* Repeat the restaurant card for other categories */}
@@ -95,7 +100,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 15,
     margin: 10,
-    alignItems: 'center',
+    alignItems: 'center', // Centers content horizontally
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -104,9 +109,13 @@ const styles = StyleSheet.create({
   },
   categoryHeader: {
     fontSize: 20,
-    fontWeight: 'bold',
-    alignSelf: 'flex-start',
     marginBottom: 10,
+    textAlign: 'center', // Center text horizontally
+    width: '100%', // Ensure it occupies the full width
+  },
+  touchable: {
+    alignSelf: 'stretch', // Stretch to the parent width
+    alignItems: 'center', // Center children horizontally
   },
   restaurantImage: {
     width: '100%',
@@ -115,8 +124,9 @@ const styles = StyleSheet.create({
   },
   restaurantName: {
     fontSize: 20,
-    fontWeight: 'bold',
     marginVertical: 5,
+    textAlign: 'center', // This ensures text is centered within its container
+    width: '100%', // This makes sure the text container takes up all the horizontal space
   },
   ratingAndTags: {
     flexDirection: 'row',
@@ -143,6 +153,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     margin: 5, // Consistent margin for visual balance
+    textAlign: 'center', // This ensures text is centered within its container
+
   },
   accessibilityTag: {
     fontSize: 16, // Adjusted for consistency

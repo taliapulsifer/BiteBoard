@@ -21,7 +21,6 @@ const UserProfile = () => {
           reviews={profileData.reviews}
           eats={profileData.eats}
         />
-        
         <Post
           user="OLIVIA"
           restaurant="KBOP"
