@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import awsconfig from './aws-exports'; // Import your Amplify configuration
 
 export const fetchRestaurants = async (latitude, longitude, apiKey) => {
     try {
@@ -16,6 +18,50 @@ export const fetchRestaurants = async (latitude, longitude, apiKey) => {
     } catch (error) {
         console.error('Error fetching restaurants:', error);
         throw error;
+    }
+};
+
+// Fetch and store restaurant data
+export const fetchAndStoreRestaurants = ansync (latitude, longitude, apiKey) => {
+    try{
+
+        //Fetch restaurants data from Google places API
+        const restaurants = await fetchRestaurants(latitude, longitude, apiKey);
+        
+        //Process and store fetched data on database
+        for(const restaurant of restaurants)
+        {
+            const createRestaurantMutation = `
+            mutation CreateRestaurant($input: CreateRestaurantInput!) {
+                createRestaurant(input: $input) {
+                    id
+                    name
+                    address
+                    cuisineType
+                    open
+                    ratings
+                    reviews
+                    updatedAt
+                }
+            }
+        `;
+
+        //Define input variables for the mutation
+        const createRestaurantInput = {
+            input: {
+                name: restaurant.name,
+                address: restaurant.vicinity,
+            }
+        };
+
+        //Execute the mutation
+        const createRestaurantRespone = await API.graphql(graphqlOperation(createRestaurantMutation, createRestaurantInput));
+        console.log('Created restaurant: ', createRestaurantRespone.data.createRestaurant);
+
+        }
+    }catch (error)
+    {
+        console.error('Error fetching and storing restaurants: ', error);
     }
 };
 
