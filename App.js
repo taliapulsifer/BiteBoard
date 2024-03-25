@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { fetchRestaurants } from './path/to/your/fetchRestaurants.js';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+    useEffect(() => {
+        // Example usage:
+        const APIKey = "YOUR_GOOGLE_PLACES_API_KEY";
+        const latitude = 29.8833; // Example latitude
+        const longitude = -97.9414; // Example longitude
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+        // Call the fetchRestaurants function here
+        fetchRestaurants(latitude, longitude, APIKey)
+            .then(restaurants => {
+                console.log('Fetched restaurants:', restaurants);
+                // Do something with the fetched restaurants here
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }, []); // Run once when the component mounts
+
+    return (
+        <div>
+            {/* Your app content */}
+        </div>
+    );
+};
+
+export default App;
