@@ -23,6 +23,11 @@
       "StackName": "amplify-biteboard-venv-194805",
       "StackId": "arn:aws:cloudformation:us-east-1:891377074475:stack/amplify-biteboard-venv-194805/5891d470-ea41-11ee-a49a-0affd5b9fae9",
       "AmplifyAppId": "dueah784s00kf"
+    },
+    "categories": {
+      "api": {
+        "biteboard": {}
+      }
     }
   }
 }
