@@ -1,0 +1,40 @@
+type Restaurant @model {
+  id: ID!
+  name: String!
+  address: String!
+  cuisineType: String!
+  open: Boolean!
+  ratings: [Int]
+  reviews: [String]
+  updatedAt: AWSDateTime
+  photos: [RestaurantPhotos] @hasMany
+}
+
+type User @model {
+  userID: ID!
+  username: String!
+  password: String!
+  posts: [Posts] @hasMany
+}
+
+type Posts @model {
+  id: ID!
+  user: User!
+  restaurant: Restaurant
+  datePosted: AWSDateTime!
+  caption: String
+  photos: [UserPhoto] @hasMany
+}
+
+type UserPhoto @model {
+  id: ID!
+  post: Posts @belongsTo
+  photo: String!
+}
+
+type RestaurantPhotos @model {
+  id: ID!
+  restaurant: Restaurant @belongsTo
+  datePosted: AWSDateTime!
+  photo: String!
+}
