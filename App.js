@@ -1,29 +1,35 @@
-import React, { useEffect } from 'react';
-import { fetchRestaurants } from './path/to/your/fetchRestaurants.js';
 
-const App = () => {
-    useEffect(() => {
-        // Example usage:
-        const APIKey = "YOUR_GOOGLE_PLACES_API_KEY";
-        const latitude = 29.8833; // Example latitude
-        const longitude = -97.9414; // Example longitude
+import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
+import Navigation from './Navigation'; // Make sure this is the correct path to Navigation.js
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { useFonts } from 'expo-font';
+import { ActivityIndicator, View } from 'react-native';
+import CustomText from './components/customText';
 
-        // Call the fetchRestaurants function here
-        fetchRestaurants(latitude, longitude, APIKey)
-            .then(restaurants => {
-                console.log('Fetched restaurants:', restaurants);
-                // Do something with the fetched restaurants here
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }, []); // Run once when the component mounts
 
+export default function App() {
+  let [fontsLoaded] = useFonts({
+    'Poppins': require('./assets/fonts/Poppins-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    // Return a loading indicator or some placeholder content
     return (
-        <div>
-            {/* Your app content */}
-        </div>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
     );
-};
+  }
 
-export default App;
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <StatusBar style="auto" />
+        <Navigation />
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
+}
+
