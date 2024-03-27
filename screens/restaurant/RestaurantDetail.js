@@ -1,22 +1,21 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { Octicons } from '@expo/vector-icons'; // Make sure to install expo vector icons
-import colors from '../../components/colors';
-import CustomText from '../../components/customText';
+import colors from '../../components/Colors';
+import globalStyles from '../../components/GlobalStyles';
 
 const RestaurantDetail = ({ iconName, children }) => {
     return (
       <View style={styles.detailItem}>
             <Octicons name={iconName} size={26} color={colors.textPrimary} style={styles.detailIcon} />
       <View style={styles.detailTextContainer}>
-        <CustomText style={styles.detailText}>{children}</CustomText>
+        <Text style={globalStyles.infoText}>{children}</Text>
       </View>
       </View>
     );
   };
 
   const styles = StyleSheet.create({
-
     detailItem: {
       flexDirection: 'row',
       alignItems: 'center',

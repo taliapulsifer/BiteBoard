@@ -1,8 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { ScrollView, StyleSheet, View, TextInput, TouchableOpacity, Image, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import colors from '../components/colors';
-import CustomText from '../components/customText';
+import globalStyles from '../components/GlobalStyles';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Search() {
@@ -31,19 +30,19 @@ export default function Search() {
       
       {/* Placeholder for restaurant card */}
       <View style={styles.card}>
-      <CustomText style={styles.categoryHeader}>KOREAN</CustomText>
+      <Text style={styles.categoryHeader}>KOREAN</Text>
       <Image style={styles.restaurantImage} source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }} />
       <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate('Retaurant')}>        
-      <CustomText style={styles.restaurantName}>KBOP</CustomText>
+      <Text style={styles.restaurantName}>KBOP</Text>
           <View style={styles.ratingAndTags}>
-            <CustomText style={styles.infoTag}>Open</CustomText>
-            <CustomText style={styles.infoTag}>Korean</CustomText>
-            <CustomText style={styles.infoTag}> 4.5 ★★★★☆</CustomText>
-            <CustomText style={styles.infoTag}>$$</CustomText>
-            <CustomText style={styles.dietTag}>Vegetarian</CustomText>
-            <CustomText style={styles.dietTag}>Vegan</CustomText>
-            <CustomText style={styles.dietTag}>Gluten Free</CustomText>
-            <CustomText style={styles.accessibilityTag}>Wheelchair Ramp</CustomText>
+            <Text style={globalStyles.infoTag}>Open</Text>
+            <Text style={globalStyles.infoTag}>Korean</Text>
+            <Text style={globalStyles.infoTag}> 4.5 ★★★★☆</Text>
+            <Text style={globalStyles.infoTag}>$$</Text>
+            <Text style={globalStyles.dietTag}>Vegetarian</Text>
+            <Text style={globalStyles.dietTag}>Vegan</Text>
+            <Text style={globalStyles.dietTag}>Gluten Free</Text>
+            <Text style={globalStyles.accessibilityTag}>Wheelchair Ramp</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -135,34 +134,5 @@ const styles = StyleSheet.create({
     width: '100%',
     flexWrap: 'wrap', // Allow tags to wrap to the next line
     marginTop: 10, // Add some space above the tags section
-  },
-  infoTag: {
-    fontSize: 16, // Adjusted for better space management
-    color: colors.textPrimary,
-    backgroundColor: colors.accentTertiary,
-    borderRadius: 15,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    margin: 5, // Ensure there's space around each tag
-  },
-  dietTag: {
-    fontSize: 16, // Adjusted for consistency
-    color: 'white',
-    backgroundColor: colors.accentSecondary,
-    borderRadius: 15,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    margin: 5, // Consistent margin for visual balance
-    textAlign: 'center', // This ensures text is centered within its container
-
-  },
-  accessibilityTag: {
-    fontSize: 16, // Adjusted for consistency
-    color: 'white',
-    backgroundColor: colors.accentPrimary,
-    borderRadius: 15,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    margin: 5, // Consistent margin for visual balance
   },
 });

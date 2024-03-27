@@ -1,8 +1,7 @@
 import React from 'react';
 import Post from '../components/Post';
 import ProfileHeader from '../components/ProfileHeader';
-import CustomText from '../components/customText';
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView, ScrollView, View, Text } from 'react-native';
 
 const UserProfile = () => {
 

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
 import RestaurantDetail from './RestaurantDetail';
-import colors from '../../components/colors';
-import CustomText from '../../components/customText';
+import colors from '../../components/Colors';
+import globalStyles from '../../components/GlobalStyles';
 
 const RestaurantProfile = () => {
 
@@ -26,7 +26,7 @@ const RestaurantProfile = () => {
                 <View style={styles.whiteBackground}>
                     <View style={styles.headerContainer}>
                         <View style={styles.titleContainer}>
-                            <CustomText style={styles.restaurantText}>K-BOP</CustomText>
+                            <Text style={styles.restaurantText}>K-BOP</Text>
                         </View>
                         <View style={styles.titleIconsContainer}>
                             <TouchableOpacity onPress={toggleBookmark} >
@@ -37,42 +37,42 @@ const RestaurantProfile = () => {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.navBarContainer}>
-                            <TouchableOpacity><CustomText style={styles.navBarText}>Overview</CustomText></TouchableOpacity>
-                            <TouchableOpacity><CustomText style={styles.navBarText}>Photos</CustomText></TouchableOpacity>
-                            <TouchableOpacity><CustomText style={styles.navBarText}>Reviews</CustomText></TouchableOpacity>
+                            <TouchableOpacity><Text style={globalStyles.headerText}>Overview</Text></TouchableOpacity>
+                            <TouchableOpacity><Text style={globalStyles.headerText}>Photos</Text></TouchableOpacity>
+                            <TouchableOpacity><Text style={globalStyles.headerText}>Reviews</Text></TouchableOpacity>
                         </View>
                     </View>
                 </View>
                 <View style={styles.categoryRow}>
                     <View style={styles.categoryContainer}>
-                        <CustomText style={styles.categoryTitle}>Rating</CustomText>
-                        <CustomText style={styles.categoryInfo}>4.5 ★★★★☆</CustomText>
+                        <Text style={globalStyles.headerText}>Rating</Text>
+                        <Text style={globalStyles.infoText}>4.5 ★★★★☆</Text>
                     </View>
                     <View style={styles.categoryContainer}>
-                        <CustomText style={styles.categoryTitle}>Price</CustomText>
-                        <CustomText style={styles.categoryInfo}>$10-20</CustomText>
+                        <Text style={globalStyles.headerText}>Price</Text>
+                        <Text style={globalStyles.infoText}>$10-20</Text>
                     </View>
                 </View>
                 <View style={styles.categoryRow}>
                     <View style={styles.categoryContainer}>
-                        <CustomText style={styles.categoryTitle}>Cuisine</CustomText>
-                        <CustomText style={styles.categoryInfo}>Korean</CustomText>
+                        <Text style={globalStyles.headerText}>Cuisine</Text>
+                        <Text style={globalStyles.infoText}>Korean</Text>
                     </View>
                     <View style={styles.categoryContainer}>
-                        <CustomText style={styles.categoryTitle}>Vibe</CustomText>
-                        <CustomText style={styles.categoryInfo}>Casual</CustomText>
+                        <Text style={globalStyles.headerText}>Vibe</Text>
+                        <Text style={globalStyles.infoText}>Casual</Text>
                     </View>
                 </View>
                 <View style={styles.tagSection}>
-                    <View style={styles.tagSectionTitle}><CustomText style={styles.navBarText}>Dietary Options</CustomText></View>
+                    <View style={styles.tagSectionTitle}><Text style={globalStyles.headerText}>Dietary Options</Text></View>
                     <View style={styles.tagRow}>
-                        <CustomText style={styles.dietTag}>Vegetarian</CustomText>
-                        <CustomText style={styles.dietTag}>Vegan</CustomText>
-                        <CustomText style={styles.dietTag}>Gluten Free</CustomText>
+                        <Text style={globalStyles.dietTag}>Vegetarian</Text>
+                        <Text style={globalStyles.dietTag}>Vegan</Text>
+                        <Text style={globalStyles.dietTag}>Gluten Free</Text>
                     </View>
-                    <View style={styles.tagSectionTitle}><CustomText style={styles.navBarText}>Accessibility</CustomText></View>
+                    <View style={styles.tagSectionTitle}><Text style={globalStyles.headerText}>Accessibility</Text></View>
                     <View style={styles.tagRow}>
-                        <CustomText style={styles.accessibilityTag}>Wheelchair ramp</CustomText>
+                        <Text style={globalStyles.accessibilityTag}>Wheelchair ramp</Text>
                     </View>
                 </View>
                 <View style={styles.detailSection}>
@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
-        
     },
     titleIconsContainer: {
         flexDirection: 'row',
@@ -110,9 +109,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         gap: 40,
         marginBottom: 20
-
     }, 
     restaurantText: {
+        fontFamily: 'PoppinsMedium',
         fontSize: 25,
         paddingVertical: 10,
         color: colors.text,
@@ -122,10 +121,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         marginBottom: 15,
         },
-    navBarText: {
-        fontSize: 20,
-        color: colors.textPrimary,
-    },
+
     categoryRow: {
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -145,40 +141,12 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 2,
     },
-    categoryTitle: {
-        fontSize: 20,
-        fontWeight: '600',
-        color: colors.textPrimary,
-        marginBottom: 5,
-    },
-    categoryInfo: {
-        fontSize: 18,
-        color: colors.textPrimary,
-    },
     tagRow: {
         marginHorizontal: 20,
         marginBottom: 20, // Increased bottom margin for space after the tags
         flexDirection: 'row',
         justifyContent: 'flex-start', // Align tags to the start
         flexWrap: 'wrap',
-    },
-    dietTag: {
-        fontSize: 20,
-        color: 'white',
-        backgroundColor: colors.accentPrimary,
-        borderRadius: 15,
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        margin: 5,
-    },
-    accessibilityTag: {
-        fontSize: 20,
-        color: 'white',
-        backgroundColor: colors.accentSecondary,
-        borderRadius: 15,
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        margin: 5,
     },
     tagSectionTitle: {
         marginLeft: 20, // Align with the tagRow's margin

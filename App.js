@@ -3,15 +3,17 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler';
 import Navigation from './Navigation'; // Make sure this is the correct path to Navigation.js
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView, Text } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { ActivityIndicator, View } from 'react-native';
-import CustomText from './components/customText';
 
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     'Poppins': require('./assets/fonts/Poppins-Regular.ttf'),
+    'PoppinsSemiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
+    'PoppinsMedium': require('./assets/fonts/Poppins-Medium.ttf'),
+
   });
 
   if (!fontsLoaded) {

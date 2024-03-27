@@ -2,7 +2,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Octicons } from '@expo/vector-icons';
-import Colors from './components/colors.js';
 import { Feed, RestaurantProfile, Search, UserProfile } from './screens/index.js'; // Import all screens from index.js
 
 

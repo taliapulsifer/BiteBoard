@@ -1,9 +1,8 @@
 // ProfileHeader.js
 
 import React from 'react';
-import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
-import colors from './colors';
-import CustomText from './customText';
+import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
+import colors from './Colors';
 
 const ProfileHeader = ({ name, reviews, eats }) => (
   <View style={styles.whiteBackground}>
@@ -14,16 +13,16 @@ const ProfileHeader = ({ name, reviews, eats }) => (
         accessible={true}
         accessibilityLabel="Profile picture"
       />
-      <CustomText style={styles.nameText} accessibilityRole="header">
+      <Text style={styles.nameText} accessibilityRole="header">
         {name}
-      </CustomText>
+      </Text>
       <View style={styles.statsContainer}>
-        <CustomText style={styles.statsText}>
+        <Text style={styles.statsText}>
           {eats} Eats
-        </CustomText>
-        <CustomText style={styles.statsText}>
+        </Text>
+        <Text style={styles.statsText}>
           {reviews} Reviews
-        </CustomText>
+        </Text>
         <TouchableOpacity
           style={styles.friendButton}
           accessible={true}
@@ -31,7 +30,7 @@ const ProfileHeader = ({ name, reviews, eats }) => (
           accessibilityRole="button"
           accessibilityHint="Double tap to follow the user"
         >
-          <CustomText style={styles.friendButtonText}>FOLLOW</CustomText>
+          <Text style={styles.friendButtonText}>FOLLOW</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -41,21 +40,21 @@ const ProfileHeader = ({ name, reviews, eats }) => (
         accessibilityLabel="Activity"
         accessibilityRole="button"
       >
-        <CustomText style={styles.navBarText}>Activity</CustomText>
+        <Text style={styles.navBarText}>Activity</Text>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
         accessibilityLabel="Photos"
         accessibilityRole="button"
       >
-        <CustomText style={styles.navBarText}>Photos</CustomText>
+        <Text style={styles.navBarText}>Photos</Text>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
         accessibilityLabel="Reviews"
         accessibilityRole="button"
       >
-        <CustomText style={styles.navBarText}>Reviews</CustomText>
+        <Text style={styles.navBarText}>Reviews</Text>
       </TouchableOpacity>
     </View>
   </View>

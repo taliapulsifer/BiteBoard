@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
-import CustomText from '../../components/customText';
-import colors from '../components/colors';
+import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native';
+import colors from '../components/Colors';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -16,17 +15,17 @@ const LoginPage = () => {
       {/* Logo and Title */}
       <View style={styles.logoContainer}>
         {/* Replace with Image component if you have a logo image */}
-        <CustomText style={styles.logo}>🍴</CustomText>
-        <CustomText style={styles.title}>BiteBoard</CustomText>
+        <Text style={styles.logo}>🍴</Text>
+        <Text style={styles.title}>BiteBoard</Text>
       </View>
       
       {/* Login/Sign Up buttons */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.buttonLogin}>
-          <CustomText style={styles.buttonText}>Log In</CustomText>
+          <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonSignUp}>
-          <CustomText style={styles.buttonText}>Sign Up</CustomText>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
 
@@ -47,7 +46,7 @@ const LoginPage = () => {
           secureTextEntry
         />
         <TouchableOpacity style={styles.buttonSignIn} onPress={handleLogin}>
-          <CustomText style={styles.buttonText}>Log In</CustomText>
+          <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
       </View>
     </View>
