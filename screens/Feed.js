@@ -7,7 +7,7 @@ export default function Feed() {
     <Post
         user="OLIVIA"
         restaurant="K-BOP"
-        category="KOREAN • $$ • CASUAL"
+        category="KOREAN • $$ • 4.5/5"
         review="Loved the vegetarian dumplings! Definitely a must try here."
         imageUri="https://reactnative.dev/img/tiny_logo.png"
         profilePicUri="https://reactnative.dev/img/tiny_logo.png"
@@ -15,7 +15,7 @@ export default function Feed() {
     <Post
         user="OLIVIA"
         restaurant="K-BOP"
-        category="KOREAN • $$ • CASUAL"
+        category="KOREAN • $$ • 4.5/5"
         review="Loved the vegetarian dumplings! Definitely a must try here."
         imageUri="https://reactnative.dev/img/tiny_logo.png"
         profilePicUri="https://reactnative.dev/img/tiny_logo.png"

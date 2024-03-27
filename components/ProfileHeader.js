@@ -3,6 +3,7 @@
 import React from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import colors from './Colors';
+import globalStyles from './GlobalStyles';
 
 const ProfileHeader = ({ name, reviews, eats }) => (
   <View style={styles.whiteBackground}>
@@ -40,21 +41,21 @@ const ProfileHeader = ({ name, reviews, eats }) => (
         accessibilityLabel="Activity"
         accessibilityRole="button"
       >
-        <Text style={styles.navBarText}>Activity</Text>
+        <Text style={globalStyles.headerText}>Activity</Text>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
         accessibilityLabel="Photos"
         accessibilityRole="button"
       >
-        <Text style={styles.navBarText}>Photos</Text>
+        <Text style={globalStyles.headerText}>Photos</Text>
       </TouchableOpacity>
       <TouchableOpacity
         accessible={true}
         accessibilityLabel="Reviews"
         accessibilityRole="button"
       >
-        <Text style={styles.navBarText}>Reviews</Text>
+        <Text style={globalStyles.headerText}>Reviews</Text>
       </TouchableOpacity>
     </View>
   </View>
@@ -66,10 +67,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginBottom: 15,
     },
-  navBarText: {
-      fontSize: 20,
-      color: colors.textPrimary,
-  },
   whiteBackground: {
     backgroundColor: colors.background,
     shadowColor: '#000',
@@ -92,6 +89,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   nameText: {
+    fontFamily: 'PoppinsMedium',
     fontSize: 24,
   },
   statsContainer: {
@@ -101,6 +99,7 @@ const styles = StyleSheet.create({
     gap: 30,
   },
   statsText: {
+    fontFamily: 'Poppins',
     fontSize: 16,
   },
   friendButton: {
@@ -109,6 +108,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   friendButtonText: {
+    fontFamily: 'Poppins',
     color: 'white',
   },
 });

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
+import { Octicons } from '@expo/vector-icons'; // Make sure to install expo vector icons
 import RestaurantDetail from './RestaurantDetail';
 import colors from '../../components/Colors';
 import globalStyles from '../../components/GlobalStyles';
@@ -46,7 +47,7 @@ const RestaurantProfile = () => {
                 <View style={styles.categoryRow}>
                     <View style={styles.categoryContainer}>
                         <Text style={globalStyles.headerText}>Rating</Text>
-                        <Text style={globalStyles.infoText}>4.5 ★★★★☆</Text>
+                        <Text style={globalStyles.infoText}>4.5 <Octicons name="star-fill" size={16} color="black" /></Text>
                     </View>
                     <View style={styles.categoryContainer}>
                         <Text style={globalStyles.headerText}>Price</Text>

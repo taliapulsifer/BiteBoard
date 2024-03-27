@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Octicons } from '@expo/vector-icons';
 import { Feed, RestaurantProfile, Search, UserProfile } from './screens/index.js'; // Import all screens from index.js
 import TopBar from './components/TopBar.js';
-
 // ######## SCREEN STACKS ########
 
 // Feed: Instantiate the stack navigator
