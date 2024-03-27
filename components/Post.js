@@ -32,9 +32,9 @@ const Post = ({ user, restaurant, category, review, imageUri, profilePicUri }) =
         <Octicons name={'location'} size={24} color={colors.textPrimary} />
           <Text style={globalStyles.headerText}>{restaurant.toUpperCase()}</Text>
         </View>
-        <Text style={globalStyles.infoText}>{category}</Text>
+        <Text style={globalStyles.infoSmall}>{category}</Text>
         </TouchableOpacity>
-        <Text style={globalStyles.infoText}>{review}</Text>
+        <Text style={globalStyles.infoSmall}>{review}</Text>
       </View>
       <View style={styles.actionContainer}>
         <TouchableOpacity onPress={toggleBookmark} style={styles.bookmarkButton}>

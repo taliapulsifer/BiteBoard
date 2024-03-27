@@ -46,6 +46,10 @@ const styles = StyleSheet.create({
         fontFamily: 'PoppinsMedium',
         fontSize: 18,
       },
+      infoSmall: {
+        fontFamily: 'Poppins',
+        fontSize: 15,
+      }
 });
 
 export default styles;

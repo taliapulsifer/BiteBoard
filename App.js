@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler';
-import Navigation from './Navigation'; // Make sure this is the correct path to Navigation.js
+import Navigation from './Navigation';
 import { SafeAreaProvider, SafeAreaView, Text } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { ActivityIndicator, View } from 'react-native';
