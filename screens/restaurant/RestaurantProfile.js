@@ -23,6 +23,7 @@ const RestaurantProfile = () => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
+
             <ScrollView contentContainerStyle={{ paddingBottom: 60 }}>
                 <View style={styles.whiteBackground}>
                     <View style={styles.headerContainer}>
@@ -43,18 +44,17 @@ const RestaurantProfile = () => {
                             <TouchableOpacity><Text style={globalStyles.headerText}>Reviews</Text></TouchableOpacity>
                         </View>
                     </View>
-                </View>
-                <View style={styles.categoryRow}>
+                </View>  
+                
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={globalStyles.horizontalScroll}>
                     <View style={styles.categoryContainer}>
                         <Text style={globalStyles.headerText}>Rating</Text>
-                        <Text style={globalStyles.infoText}>4.5 <Octicons name="star-fill" size={16} color="black" /></Text>
+                        <Text style={globalStyles.infoText}>4.5/5</Text>
                     </View>
                     <View style={styles.categoryContainer}>
                         <Text style={globalStyles.headerText}>Price</Text>
                         <Text style={globalStyles.infoText}>$10-20</Text>
                     </View>
-                </View>
-                <View style={styles.categoryRow}>
                     <View style={styles.categoryContainer}>
                         <Text style={globalStyles.headerText}>Cuisine</Text>
                         <Text style={globalStyles.infoText}>Korean</Text>
@@ -63,10 +63,11 @@ const RestaurantProfile = () => {
                         <Text style={globalStyles.headerText}>Vibe</Text>
                         <Text style={globalStyles.infoText}>Casual</Text>
                     </View>
-                </View>
+                    </ScrollView>
+
                 <View style={styles.tagSection}>
                     <View style={styles.tagSectionTitle}><Text style={globalStyles.headerText}>Dietary Options</Text></View>
-                    <View style={styles.tagRow}>
+                        <View style={styles.tagRow}>
                         <Text style={globalStyles.dietTag}>Vegetarian</Text>
                         <Text style={globalStyles.dietTag}>Vegan</Text>
                         <Text style={globalStyles.dietTag}>Gluten Free</Text>
@@ -76,6 +77,7 @@ const RestaurantProfile = () => {
                         <Text style={globalStyles.accessibilityTag}>Wheelchair ramp</Text>
                     </View>
                 </View>
+
                 <View style={styles.detailSection}>
                     <RestaurantDetail iconName="location">{`301 N Guadalupe St Ste 164, San Marcos, TX 78666`}</RestaurantDetail>
                     <RestaurantDetail iconName="clock">{`Open · Closes 9:30 PM`}</RestaurantDetail>
@@ -121,17 +123,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginBottom: 15,
-        },
-
+    },
     categoryRow: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        flexWrap: 'wrap',
         marginTop: 10,
-        },
-    categoryContainer: {
-        width: '45%',
+      },
+      categoryContainer: {
+        width: 150,
         padding: 15,
         backgroundColor: colors.background,
         margin: 5,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 2,
-    },
+      },
     tagRow: {
         marginHorizontal: 20,
         marginBottom: 20, // Increased bottom margin for space after the tags

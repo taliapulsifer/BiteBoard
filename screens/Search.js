@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, TextInput, TouchableOpacity, Image, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Octicons } from '@expo/vector-icons'; 
 import globalStyles from '../components/GlobalStyles';
 import { useNavigation } from '@react-navigation/native';
 
@@ -33,18 +34,21 @@ export default function Search() {
       <Text style={styles.categoryHeader}>KOREAN</Text>
       <Image style={styles.restaurantImage} source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }} />
       <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate('Retaurant')}>        
-      <Text style={styles.restaurantName}>KBOP</Text>
-          <View style={styles.ratingAndTags}>
+      <Text style={styles.restaurantName}>K-BOP</Text>
+      </TouchableOpacity>
+
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={globalStyles.horizontalScroll}>
+        <View style={styles.ratingAndTags}>
             <Text style={globalStyles.infoTag}>Open</Text>
             <Text style={globalStyles.infoTag}>Korean</Text>
-            <Text style={globalStyles.infoTag}> 4.5 ★★★★☆</Text>
+            <Text style={globalStyles.infoTag}> 4.5 <Octicons name="star-fill" size={16} color="black" /></Text>
             <Text style={globalStyles.infoTag}>$$</Text>
             <Text style={globalStyles.dietTag}>Vegetarian</Text>
             <Text style={globalStyles.dietTag}>Vegan</Text>
             <Text style={globalStyles.dietTag}>Gluten Free</Text>
             <Text style={globalStyles.accessibilityTag}>Wheelchair Ramp</Text>
           </View>
-        </TouchableOpacity>
+      </ScrollView>
       </View>
       
       {/* Repeat the restaurant card for other categories */}
@@ -123,16 +127,16 @@ const styles = StyleSheet.create({
   },
   restaurantName: {
     fontSize: 20,
-    marginVertical: 5,
-    textAlign: 'center', // This ensures text is centered within its container
-    width: '100%', // This makes sure the text container takes up all the horizontal space
+    textAlign: 'center',
+    marginTop: 10,
+    width: '100%',
   },
   ratingAndTags: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center', // Center tags horizontally for better alignment
+    justifyContent: 'center',
+    marginTop: 0,
     width: '100%',
-    flexWrap: 'wrap', // Allow tags to wrap to the next line
-    marginTop: 10, // Add some space above the tags section
+    flexWrap: 'wrap',
   },
 });
