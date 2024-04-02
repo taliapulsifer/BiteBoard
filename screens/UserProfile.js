@@ -12,6 +12,8 @@ const UserProfile = () => {
     eats: 30,
   };
 
+  //Call 
+
   return (
   
     <SafeAreaView>

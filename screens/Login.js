@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
 import CustomText from '../../components/customText';
 import colors from '../components/colors';
+import {withAuthenticator} from 'aws-amplify-react-native';
+
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -114,4 +117,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginPage;
+export default withAuthenticator(LoginPage);
+//export default LoginPage;

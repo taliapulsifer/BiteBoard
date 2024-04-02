@@ -7,9 +7,53 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { ActivityIndicator, View } from 'react-native';
 import CustomText from './components/customText';
+import { listPosts, createPost } from './graphql/queries';
 
+const initialPostState = { name: '', description: '' };
+const client = generateClient();
 
-export default function App() {
+const App = () => {
+
+  const [formState, setPostState] = useState(initialPostState);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  function setInput(key, value) {
+    setFormState({ ...formState, [key]: value });
+  }
+
+  async function fetchPosts() {
+    try {
+      const postData = await client.graphql({
+        query: listPosts
+      });
+      const posts = postData.data.listPosts.items;
+      setPosts(posts);
+    } catch (err) {
+      console.log('error fetching posts', err);
+    }
+  }
+
+  async function addPost() {
+    try {
+      if (!postState.title || !postState.content) return;
+      const post = { ...postState };
+      setPosts([...posts, post]);
+      setPostState(initialPostState);
+      await client.graphql({
+        query: createPost,
+        variables: {
+          input: post
+        }
+      });
+    } catch (err) {
+      console.log('error creating post:', err);
+    }
+  }
+
   let [fontsLoaded] = useFonts({
     'Poppins': require('./assets/fonts/Poppins-Regular.ttf'),
   });

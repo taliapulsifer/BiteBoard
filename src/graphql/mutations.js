@@ -1,203 +1,410 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createBlog = /* GraphQL */ `
-  mutation CreateBlog(
-    $input: CreateBlogInput!
-    $condition: ModelBlogConditionInput
+export const createRestaurant = /* GraphQL */ `
+  mutation CreateRestaurant(
+    $input: CreateRestaurantInput!
+    $condition: ModelRestaurantConditionInput
   ) {
-    createBlog(input: $input, condition: $condition) {
+    createRestaurant(input: $input, condition: $condition) {
       id
       name
+      address
+      cuisineType
+      open
+      ratings
+      reviews
+      updatedAt
+      photos {
+        nextToken
+        __typename
+      }
+      createdAt
+      __typename
+    }
+  }
+`;
+export const updateRestaurant = /* GraphQL */ `
+  mutation UpdateRestaurant(
+    $input: UpdateRestaurantInput!
+    $condition: ModelRestaurantConditionInput
+  ) {
+    updateRestaurant(input: $input, condition: $condition) {
+      id
+      name
+      address
+      cuisineType
+      open
+      ratings
+      reviews
+      updatedAt
+      photos {
+        nextToken
+        __typename
+      }
+      createdAt
+      __typename
+    }
+  }
+`;
+export const deleteRestaurant = /* GraphQL */ `
+  mutation DeleteRestaurant(
+    $input: DeleteRestaurantInput!
+    $condition: ModelRestaurantConditionInput
+  ) {
+    deleteRestaurant(input: $input, condition: $condition) {
+      id
+      name
+      address
+      cuisineType
+      open
+      ratings
+      reviews
+      updatedAt
+      photos {
+        nextToken
+        __typename
+      }
+      createdAt
+      __typename
+    }
+  }
+`;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      userID
+      username
+      password
       posts {
         nextToken
         __typename
       }
+      id
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const updateBlog = /* GraphQL */ `
-  mutation UpdateBlog(
-    $input: UpdateBlogInput!
-    $condition: ModelBlogConditionInput
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
   ) {
-    updateBlog(input: $input, condition: $condition) {
-      id
-      name
+    updateUser(input: $input, condition: $condition) {
+      userID
+      username
+      password
       posts {
         nextToken
         __typename
       }
+      id
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const deleteBlog = /* GraphQL */ `
-  mutation DeleteBlog(
-    $input: DeleteBlogInput!
-    $condition: ModelBlogConditionInput
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
   ) {
-    deleteBlog(input: $input, condition: $condition) {
-      id
-      name
+    deleteUser(input: $input, condition: $condition) {
+      userID
+      username
+      password
       posts {
         nextToken
         __typename
       }
+      id
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const createPost = /* GraphQL */ `
-  mutation CreatePost(
-    $input: CreatePostInput!
-    $condition: ModelPostConditionInput
+export const createPosts = /* GraphQL */ `
+  mutation CreatePosts(
+    $input: CreatePostsInput!
+    $condition: ModelPostsConditionInput
   ) {
-    createPost(input: $input, condition: $condition) {
+    createPosts(input: $input, condition: $condition) {
       id
-      title
-      blog {
+      user {
+        userID
+        username
+        password
         id
-        name
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      caption
+      photos {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      blogPostsId
+      userPostsId
       __typename
     }
   }
 `;
-export const updatePost = /* GraphQL */ `
-  mutation UpdatePost(
-    $input: UpdatePostInput!
-    $condition: ModelPostConditionInput
+export const updatePosts = /* GraphQL */ `
+  mutation UpdatePosts(
+    $input: UpdatePostsInput!
+    $condition: ModelPostsConditionInput
   ) {
-    updatePost(input: $input, condition: $condition) {
+    updatePosts(input: $input, condition: $condition) {
       id
-      title
-      blog {
+      user {
+        userID
+        username
+        password
         id
-        name
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      caption
+      photos {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      blogPostsId
+      userPostsId
       __typename
     }
   }
 `;
-export const deletePost = /* GraphQL */ `
-  mutation DeletePost(
-    $input: DeletePostInput!
-    $condition: ModelPostConditionInput
+export const deletePosts = /* GraphQL */ `
+  mutation DeletePosts(
+    $input: DeletePostsInput!
+    $condition: ModelPostsConditionInput
   ) {
-    deletePost(input: $input, condition: $condition) {
+    deletePosts(input: $input, condition: $condition) {
       id
-      title
-      blog {
+      user {
+        userID
+        username
+        password
         id
-        name
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      caption
+      photos {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      blogPostsId
+      userPostsId
       __typename
     }
   }
 `;
-export const createComment = /* GraphQL */ `
-  mutation CreateComment(
-    $input: CreateCommentInput!
-    $condition: ModelCommentConditionInput
+export const createUserPhoto = /* GraphQL */ `
+  mutation CreateUserPhoto(
+    $input: CreateUserPhotoInput!
+    $condition: ModelUserPhotoConditionInput
   ) {
-    createComment(input: $input, condition: $condition) {
+    createUserPhoto(input: $input, condition: $condition) {
       id
       post {
         id
-        title
+        datePosted
+        caption
         createdAt
         updatedAt
-        blogPostsId
+        userPostsId
         __typename
       }
-      content
+      photo
       createdAt
       updatedAt
-      postCommentsId
+      postsPhotosId
       __typename
     }
   }
 `;
-export const updateComment = /* GraphQL */ `
-  mutation UpdateComment(
-    $input: UpdateCommentInput!
-    $condition: ModelCommentConditionInput
+export const updateUserPhoto = /* GraphQL */ `
+  mutation UpdateUserPhoto(
+    $input: UpdateUserPhotoInput!
+    $condition: ModelUserPhotoConditionInput
   ) {
-    updateComment(input: $input, condition: $condition) {
+    updateUserPhoto(input: $input, condition: $condition) {
       id
       post {
         id
-        title
+        datePosted
+        caption
         createdAt
         updatedAt
-        blogPostsId
+        userPostsId
         __typename
       }
-      content
+      photo
       createdAt
       updatedAt
-      postCommentsId
+      postsPhotosId
       __typename
     }
   }
 `;
-export const deleteComment = /* GraphQL */ `
-  mutation DeleteComment(
-    $input: DeleteCommentInput!
-    $condition: ModelCommentConditionInput
+export const deleteUserPhoto = /* GraphQL */ `
+  mutation DeleteUserPhoto(
+    $input: DeleteUserPhotoInput!
+    $condition: ModelUserPhotoConditionInput
   ) {
-    deleteComment(input: $input, condition: $condition) {
+    deleteUserPhoto(input: $input, condition: $condition) {
       id
       post {
         id
-        title
+        datePosted
+        caption
         createdAt
         updatedAt
-        blogPostsId
+        userPostsId
         __typename
       }
-      content
+      photo
       createdAt
       updatedAt
-      postCommentsId
+      postsPhotosId
+      __typename
+    }
+  }
+`;
+export const createRestaurantPhotos = /* GraphQL */ `
+  mutation CreateRestaurantPhotos(
+    $input: CreateRestaurantPhotosInput!
+    $condition: ModelRestaurantPhotosConditionInput
+  ) {
+    createRestaurantPhotos(input: $input, condition: $condition) {
+      id
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      photo
+      createdAt
+      updatedAt
+      restaurantPhotosId
+      __typename
+    }
+  }
+`;
+export const updateRestaurantPhotos = /* GraphQL */ `
+  mutation UpdateRestaurantPhotos(
+    $input: UpdateRestaurantPhotosInput!
+    $condition: ModelRestaurantPhotosConditionInput
+  ) {
+    updateRestaurantPhotos(input: $input, condition: $condition) {
+      id
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      photo
+      createdAt
+      updatedAt
+      restaurantPhotosId
+      __typename
+    }
+  }
+`;
+export const deleteRestaurantPhotos = /* GraphQL */ `
+  mutation DeleteRestaurantPhotos(
+    $input: DeleteRestaurantPhotosInput!
+    $condition: ModelRestaurantPhotosConditionInput
+  ) {
+    deleteRestaurantPhotos(input: $input, condition: $condition) {
+      id
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      photo
+      createdAt
+      updatedAt
+      restaurantPhotosId
       __typename
     }
   }
