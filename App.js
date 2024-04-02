@@ -7,7 +7,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { ActivityIndicator, View } from 'react-native';
 import CustomText from './components/customText';
-import { listPosts, createPost } from './graphql/queries';
+import { listPosts, createPost } from './src/graphql/queries';
 
 const initialPostState = { name: '', description: '' };
 const client = generateClient();
