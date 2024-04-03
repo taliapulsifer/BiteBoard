@@ -3,6 +3,8 @@ import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-nativ
 import colors from '../components/colors';
 import { Octicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { Auth } from 'aws-amplify';
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -13,6 +15,7 @@ const LoginPage = () => {
   const handleLogin = () => {
     console.log(email, password);
   };
+
   async function signUp(username, password, email, profileData) {
     try {
     await Auth.signUp({
@@ -30,6 +33,7 @@ const LoginPage = () => {
     console.log('Error signing up:', error);
     }
     }
+    
   return (
     <View style={styles.container}>
       {/* Logo and Title */}
