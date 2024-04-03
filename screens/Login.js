@@ -13,7 +13,23 @@ const LoginPage = () => {
   const handleLogin = () => {
     console.log(email, password);
   };
-
+  async function signUp(username, password, email, profileData) {
+    try {
+    await Auth.signUp({
+    username,
+    password,
+    attributes: {
+    email,
+    }
+    });
+    console.log('Signed up successfully');
+    
+    // After signing up, create user profile
+    await createUserProfile(username, profileData);
+    } catch (error) {
+    console.log('Error signing up:', error);
+    }
+    }
   return (
     <View style={styles.container}>
       {/* Logo and Title */}

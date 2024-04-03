@@ -1,31 +1,79 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getBlog = /* GraphQL */ `
-  query GetBlog($id: ID!) {
-    getBlog(id: $id) {
+export const getRestaurant = /* GraphQL */ `
+  query GetRestaurant($id: ID!) {
+    getRestaurant(id: $id) {
       id
       name
+      address
+      cuisineType
+      open
+      ratings
+      reviews
+      updatedAt
+      photos {
+        nextToken
+        __typename
+      }
+      createdAt
+      __typename
+    }
+  }
+`;
+export const listRestaurants = /* GraphQL */ `
+  query ListRestaurants(
+    $filter: ModelRestaurantFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRestaurants(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      userID
+      username
+      password
       posts {
         nextToken
         __typename
       }
+      id
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const listBlogs = /* GraphQL */ `
-  query ListBlogs(
-    $filter: ModelBlogFilterInput
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listBlogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        userID
+        username
+        password
         id
-        name
         createdAt
         updatedAt
         __typename
@@ -35,42 +83,58 @@ export const listBlogs = /* GraphQL */ `
     }
   }
 `;
-export const getPost = /* GraphQL */ `
-  query GetPost($id: ID!) {
-    getPost(id: $id) {
+export const getPosts = /* GraphQL */ `
+  query GetPosts($id: ID!) {
+    getPosts(id: $id) {
       id
-      title
-      blog {
+      user {
+        userID
+        username
+        password
         id
-        name
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      caption
+      photos {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      blogPostsId
+      userPostsId
       __typename
     }
   }
 `;
 export const listPosts = /* GraphQL */ `
   query ListPosts(
-    $filter: ModelPostFilterInput
+    $filter: ModelPostsFilterInput
     $limit: Int
     $nextToken: String
   ) {
     listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        title
+        datePosted
+        caption
         createdAt
         updatedAt
-        blogPostsId
+        userPostsId
         __typename
       }
       nextToken
@@ -78,39 +142,90 @@ export const listPosts = /* GraphQL */ `
     }
   }
 `;
-export const getComment = /* GraphQL */ `
-  query GetComment($id: ID!) {
-    getComment(id: $id) {
+export const getUserPhoto = /* GraphQL */ `
+  query GetUserPhoto($id: ID!) {
+    getUserPhoto(id: $id) {
       id
       post {
         id
-        title
+        datePosted
+        caption
         createdAt
         updatedAt
-        blogPostsId
+        userPostsId
         __typename
       }
-      content
+      photo
       createdAt
       updatedAt
-      postCommentsId
+      postsPhotosId
       __typename
     }
   }
 `;
-export const listComments = /* GraphQL */ `
-  query ListComments(
-    $filter: ModelCommentFilterInput
+export const listUserPhotos = /* GraphQL */ `
+  query ListUserPhotos(
+    $filter: ModelUserPhotoFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listUserPhotos(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        content
+        photo
         createdAt
         updatedAt
-        postCommentsId
+        postsPhotosId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getRestaurantPhotos = /* GraphQL */ `
+  query GetRestaurantPhotos($id: ID!) {
+    getRestaurantPhotos(id: $id) {
+      id
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      photo
+      createdAt
+      updatedAt
+      restaurantPhotosId
+      __typename
+    }
+  }
+`;
+export const listRestaurantPhotos = /* GraphQL */ `
+  query ListRestaurantPhotos(
+    $filter: ModelRestaurantPhotosFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRestaurantPhotos(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        datePosted
+        photo
+        createdAt
+        updatedAt
+        restaurantPhotosId
         __typename
       }
       nextToken

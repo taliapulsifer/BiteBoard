@@ -1,176 +1,383 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBlog = /* GraphQL */ `
-  subscription OnCreateBlog($filter: ModelSubscriptionBlogFilterInput) {
-    onCreateBlog(filter: $filter) {
+export const onCreateRestaurant = /* GraphQL */ `
+  subscription OnCreateRestaurant(
+    $filter: ModelSubscriptionRestaurantFilterInput
+  ) {
+    onCreateRestaurant(filter: $filter) {
       id
       name
+      address
+      cuisineType
+      open
+      ratings
+      reviews
+      updatedAt
+      photos {
+        nextToken
+        __typename
+      }
+      createdAt
+      __typename
+    }
+  }
+`;
+export const onUpdateRestaurant = /* GraphQL */ `
+  subscription OnUpdateRestaurant(
+    $filter: ModelSubscriptionRestaurantFilterInput
+  ) {
+    onUpdateRestaurant(filter: $filter) {
+      id
+      name
+      address
+      cuisineType
+      open
+      ratings
+      reviews
+      updatedAt
+      photos {
+        nextToken
+        __typename
+      }
+      createdAt
+      __typename
+    }
+  }
+`;
+export const onDeleteRestaurant = /* GraphQL */ `
+  subscription OnDeleteRestaurant(
+    $filter: ModelSubscriptionRestaurantFilterInput
+  ) {
+    onDeleteRestaurant(filter: $filter) {
+      id
+      name
+      address
+      cuisineType
+      open
+      ratings
+      reviews
+      updatedAt
+      photos {
+        nextToken
+        __typename
+      }
+      createdAt
+      __typename
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+    onCreateUser(filter: $filter) {
+      userID
+      username
+      password
       posts {
         nextToken
         __typename
       }
+      id
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const onUpdateBlog = /* GraphQL */ `
-  subscription OnUpdateBlog($filter: ModelSubscriptionBlogFilterInput) {
-    onUpdateBlog(filter: $filter) {
-      id
-      name
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+    onUpdateUser(filter: $filter) {
+      userID
+      username
+      password
       posts {
         nextToken
         __typename
       }
+      id
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const onDeleteBlog = /* GraphQL */ `
-  subscription OnDeleteBlog($filter: ModelSubscriptionBlogFilterInput) {
-    onDeleteBlog(filter: $filter) {
-      id
-      name
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+    onDeleteUser(filter: $filter) {
+      userID
+      username
+      password
       posts {
         nextToken
         __typename
       }
+      id
       createdAt
       updatedAt
       __typename
     }
   }
 `;
-export const onCreatePost = /* GraphQL */ `
-  subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
-    onCreatePost(filter: $filter) {
+export const onCreatePosts = /* GraphQL */ `
+  subscription OnCreatePosts($filter: ModelSubscriptionPostsFilterInput) {
+    onCreatePosts(filter: $filter) {
       id
-      title
-      blog {
+      user {
+        userID
+        username
+        password
         id
-        name
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      caption
+      photos {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      blogPostsId
+      userPostsId
       __typename
     }
   }
 `;
-export const onUpdatePost = /* GraphQL */ `
-  subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
-    onUpdatePost(filter: $filter) {
+export const onUpdatePosts = /* GraphQL */ `
+  subscription OnUpdatePosts($filter: ModelSubscriptionPostsFilterInput) {
+    onUpdatePosts(filter: $filter) {
       id
-      title
-      blog {
+      user {
+        userID
+        username
+        password
         id
-        name
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      caption
+      photos {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      blogPostsId
+      userPostsId
       __typename
     }
   }
 `;
-export const onDeletePost = /* GraphQL */ `
-  subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
-    onDeletePost(filter: $filter) {
+export const onDeletePosts = /* GraphQL */ `
+  subscription OnDeletePosts($filter: ModelSubscriptionPostsFilterInput) {
+    onDeletePosts(filter: $filter) {
       id
-      title
-      blog {
+      user {
+        userID
+        username
+        password
         id
-        name
         createdAt
         updatedAt
         __typename
       }
-      comments {
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      caption
+      photos {
         nextToken
         __typename
       }
       createdAt
       updatedAt
-      blogPostsId
+      userPostsId
       __typename
     }
   }
 `;
-export const onCreateComment = /* GraphQL */ `
-  subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
-    onCreateComment(filter: $filter) {
+export const onCreateUserPhoto = /* GraphQL */ `
+  subscription OnCreateUserPhoto(
+    $filter: ModelSubscriptionUserPhotoFilterInput
+  ) {
+    onCreateUserPhoto(filter: $filter) {
       id
       post {
         id
-        title
+        datePosted
+        caption
         createdAt
         updatedAt
-        blogPostsId
+        userPostsId
         __typename
       }
-      content
+      photo
       createdAt
       updatedAt
-      postCommentsId
+      postsPhotosId
       __typename
     }
   }
 `;
-export const onUpdateComment = /* GraphQL */ `
-  subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
-    onUpdateComment(filter: $filter) {
+export const onUpdateUserPhoto = /* GraphQL */ `
+  subscription OnUpdateUserPhoto(
+    $filter: ModelSubscriptionUserPhotoFilterInput
+  ) {
+    onUpdateUserPhoto(filter: $filter) {
       id
       post {
         id
-        title
+        datePosted
+        caption
         createdAt
         updatedAt
-        blogPostsId
+        userPostsId
         __typename
       }
-      content
+      photo
       createdAt
       updatedAt
-      postCommentsId
+      postsPhotosId
       __typename
     }
   }
 `;
-export const onDeleteComment = /* GraphQL */ `
-  subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
-    onDeleteComment(filter: $filter) {
+export const onDeleteUserPhoto = /* GraphQL */ `
+  subscription OnDeleteUserPhoto(
+    $filter: ModelSubscriptionUserPhotoFilterInput
+  ) {
+    onDeleteUserPhoto(filter: $filter) {
       id
       post {
         id
-        title
+        datePosted
+        caption
         createdAt
         updatedAt
-        blogPostsId
+        userPostsId
         __typename
       }
-      content
+      photo
       createdAt
       updatedAt
-      postCommentsId
+      postsPhotosId
+      __typename
+    }
+  }
+`;
+export const onCreateRestaurantPhotos = /* GraphQL */ `
+  subscription OnCreateRestaurantPhotos(
+    $filter: ModelSubscriptionRestaurantPhotosFilterInput
+  ) {
+    onCreateRestaurantPhotos(filter: $filter) {
+      id
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      photo
+      createdAt
+      updatedAt
+      restaurantPhotosId
+      __typename
+    }
+  }
+`;
+export const onUpdateRestaurantPhotos = /* GraphQL */ `
+  subscription OnUpdateRestaurantPhotos(
+    $filter: ModelSubscriptionRestaurantPhotosFilterInput
+  ) {
+    onUpdateRestaurantPhotos(filter: $filter) {
+      id
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      photo
+      createdAt
+      updatedAt
+      restaurantPhotosId
+      __typename
+    }
+  }
+`;
+export const onDeleteRestaurantPhotos = /* GraphQL */ `
+  subscription OnDeleteRestaurantPhotos(
+    $filter: ModelSubscriptionRestaurantPhotosFilterInput
+  ) {
+    onDeleteRestaurantPhotos(filter: $filter) {
+      id
+      restaurant {
+        id
+        name
+        address
+        cuisineType
+        open
+        ratings
+        reviews
+        updatedAt
+        createdAt
+        __typename
+      }
+      datePosted
+      photo
+      createdAt
+      updatedAt
+      restaurantPhotosId
       __typename
     }
   }
