@@ -33,7 +33,7 @@ export default function Search() {
       <View style={styles.card}>
       <Text style={styles.categoryHeader}>KOREAN</Text>
       <Image style={styles.restaurantImage} source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }} />
-      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate('Retaurant')}>        
+      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate('Restaurant')}>        
       <Text style={styles.restaurantName}>K-BOP</Text>
       </TouchableOpacity>
 

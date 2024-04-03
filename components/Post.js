@@ -27,7 +27,7 @@ const Post = ({ user, restaurant, category, review, imageUri, profilePicUri }) =
       </View>
       <Image source={{ uri: imageUri }} style={styles.image} />
       <View style={styles.content}>
-        <TouchableOpacity onPress={() => navigation.navigate('Retaurant', { restaurantName: restaurant })}>
+        <TouchableOpacity onPress={() => navigation.navigate('Restaurant', { restaurantName: restaurant })}>
         <View style={styles.restaurantContainer}>
         <Octicons name={'location'} size={24} color={colors.textPrimary} />
           <Text style={globalStyles.headerText}>{restaurant.toUpperCase()}</Text>

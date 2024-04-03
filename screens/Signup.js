@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native';
-import colors from '../components/colors';
-import { useNavigation } from '@react-navigation/native';
 
-const LoginPage = () => {
+// Assuming colors is a valid import that provides color values
+import colors from '../components/colors';
+
+const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigation = useNavigation();
 
   const handleLogin = () => {
     console.log(email, password);
@@ -15,18 +14,11 @@ const LoginPage = () => {
 
   return (
     <View style={styles.container}>
+
       {/* Logo and Title */}
       <View style={styles.logoContainer}>
-        {/* Replace with Image component if you have a logo image */}
         <Text style={styles.logo}>🍴</Text>
-        <Text style={styles.title}>Log In</Text>
-      </View>
-      
-      {/* Login/Sign Up buttons */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.buttonSignUp} onPress={() => navigation.navigate('Signup')}>
-          <Text style={styles.signUpText}>Don't have an account? Click to sign up!</Text>
-        </TouchableOpacity>
+        <Text style={styles.title}>Sign Up</Text>
       </View>
 
       {/* Email and Password Input */}
@@ -34,19 +26,19 @@ const LoginPage = () => {
         <TextInput
           style={styles.input}
           placeholder="Email Address"
-          value={email}
           onChangeText={setEmail}
+          value={email}
           autoCapitalize="none"
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
-          value={password}
           onChangeText={setPassword}
-          secureTextEntry
+          value={password}
+          secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.buttonSignIn} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Log In</Text>
+        <TouchableOpacity style={styles.buttonSignUp} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -68,24 +60,15 @@ const styles = StyleSheet.create({
     fontSize: 50,
   },
   title: {
+    fontFamily: 'PoppinsMedium',
     fontSize: 24,
     marginBottom: 24,
-    fontFamily: 'PoppinsMedium',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    marginBottom: 20,
-    width: 200,
-    alignContent: 'center',
-    justifyContent: 'center',
-    flexWrap: 'wrap'
   },
   inputContainer: {
     width: '80%',
     backgroundColor: colors.accentTertiary,
     borderRadius: 20,
     padding: 20,
-    boxShadow: '0 4px 6px rgba(0,0,0,0.1)', // Note: boxShadow is not supported in React Native, you would need to use elevation for Android
   },
   input: {
     fontFamily: 'Poppins',
@@ -94,13 +77,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 5,
   },
-  signUpText: {
-    fontFamily: 'Poppins',
-    color: colors.accentPrimary,
-    textDecorationLine: 'underline',
-    fontSize: 15,
-  },
-  buttonSignIn: {
+  buttonSignUp: {
     backgroundColor: colors.accentPrimary,
     padding: 15,
     borderRadius: 5,
@@ -109,7 +86,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins',
     textAlign: 'center',
     color: '#fff',
-  }
+  },
 });
 
-export default LoginPage;
+export default Signup;

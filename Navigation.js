@@ -2,8 +2,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Octicons } from '@expo/vector-icons';
-import { Feed, RestaurantProfile, Search, UserProfile } from './screens/index.js'; // Import all screens from index.js
+import { Feed, LoginPage, RestaurantProfile, Search, Signup, UserProfile } from './screens/index.js'; // Import all screens from index.js
 import TopBar from './components/TopBar.js';
+
 // ######## SCREEN STACKS ########
 
 // Feed: Instantiate the stack navigator
@@ -17,8 +18,10 @@ function FeedStackGroup() {
                 headerShown: true, // Enable the header
                 header: ({ navigation }) => <TopBar navigation={navigation} />, // Use TopBar as the header
         }}>
-            <FeedStack.Screen name="FeedHome" component={Feed} options={{ title: 'Feed' }} />
-            <FeedStack.Screen name="Retaurant" component={RestaurantProfile} />
+            <FeedStack.Screen name="FeedHome" component={Feed} />
+            <FeedStack.Screen name="Restaurant" component={RestaurantProfile} />
+            <FeedStack.Screen name="LoginPage" component={LoginPage} />
+            <FeedStack.Screen name="Signup" component={Signup} />
         </FeedStack.Navigator>
     );
 }

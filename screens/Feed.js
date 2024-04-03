@@ -1,9 +1,15 @@
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, TouchableOpacity, Text } from 'react-native';
 import Post from '../components/Post'
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Feed() {
+
+  const navigation = useNavigation();
+  
   return (
     <ScrollView contentContainerStyle={{ paddingBottom: 60 }}>
+    <TouchableOpacity onPress={() => navigation.navigate('LoginPage')}><Text>Log in!</Text></TouchableOpacity>
     <Post
         user="OLIVIA"
         restaurant="K-BOP"
