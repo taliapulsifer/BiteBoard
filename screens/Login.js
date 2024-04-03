@@ -4,7 +4,7 @@ import colors from '../components/colors';
 import { Octicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
-
+import createUser from createUser
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +16,7 @@ const LoginPage = () => {
     console.log(email, password);
   };
 
-  async function signUp(username, password, email, profileData) {
+  async function signUp(password, email) {
     try {
     await Auth.signUp({
     username,
@@ -28,26 +28,19 @@ const LoginPage = () => {
     console.log('Signed up successfully');
     
     // After signing up, create user profile
-    await createUserProfile(username, profileData);
+    await createUser(password, email);
     } catch (error) {
     console.log('Error signing up:', error);
     }
     }
-    
-  return (
+
+return (
     <View style={styles.container}>
+
       {/* Logo and Title */}
       <View style={styles.logoContainer}>
-        {/* Replace with Image component if you have a logo image */}
-        <Text><Octicons name="bold" size={50} color="black" /></Text>
-        <Text style={styles.title}>Log In</Text>
-      </View>
-      
-      {/* Login/Sign Up buttons */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.buttonSignUp} onPress={() => navigation.navigate('Signup')}>
-          <Text style={styles.signUpText}>Don't have an account? Click to sign up!</Text>
-        </TouchableOpacity>
+      <Text><Octicons name="bold" size={50} color="black" /></Text>
+        <Text style={styles.title}>Sign Up</Text>
       </View>
 
       {/* Email and Password Input */}
@@ -55,19 +48,19 @@ const LoginPage = () => {
         <TextInput
           style={styles.input}
           placeholder="Email Address"
-          value={email}
           onChangeText={setEmail}
+          value={email}
           autoCapitalize="none"
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
-          value={password}
           onChangeText={setPassword}
-          secureTextEntry
+          value={password}
+          secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.buttonSignIn} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Log In</Text>
+        <TouchableOpacity style={styles.buttonSignUp} onPress={ () =>signUp(password, email)}>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -86,24 +79,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
+    fontFamily: 'PoppinsMedium',
     fontSize: 24,
     marginBottom: 24,
-    fontFamily: 'PoppinsMedium',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    marginBottom: 20,
-    width: 200,
-    alignContent: 'center',
-    justifyContent: 'center',
-    flexWrap: 'wrap'
   },
   inputContainer: {
     width: '80%',
     backgroundColor: colors.accentTertiary,
     borderRadius: 20,
     padding: 20,
-    boxShadow: '0 4px 6px rgba(0,0,0,0.1)', // Note: boxShadow is not supported in React Native, you would need to use elevation for Android
   },
   input: {
     fontFamily: 'Poppins',
@@ -112,13 +96,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 5,
   },
-  signUpText: {
-    fontFamily: 'Poppins',
-    color: colors.accentPrimary,
-    textDecorationLine: 'underline',
-    fontSize: 15,
-  },
-  buttonSignIn: {
+  buttonSignUp: {
     backgroundColor: colors.accentPrimary,
     padding: 15,
     borderRadius: 5,
@@ -127,7 +105,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins',
     textAlign: 'center',
     color: '#fff',
-  }
+  },
 });
 
-export default LoginPage;
+export default Signup;
