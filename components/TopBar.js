@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Octicons } from '@expo/vector-icons';
-import colors from './Colors';
+import colors from './colors';
 
 const TopBar = ({ navigation }) => {
   return (

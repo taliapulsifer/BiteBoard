@@ -3,7 +3,7 @@ import { SafeAreaView, ScrollView, Text, View, StyleSheet, TouchableOpacity } fr
 import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
 import { Octicons } from '@expo/vector-icons'; // Make sure to install expo vector icons
 import RestaurantDetail from './RestaurantDetail';
-import colors from '../../components/Colors';
+import colors from '../../components/colors';
 import globalStyles from '../../components/GlobalStyles';
 
 const RestaurantProfile = () => {

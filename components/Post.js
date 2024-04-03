@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { Octicons } from '@expo/vector-icons'; // Make sure to install expo vector icons
 import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
 import globalStyles from './GlobalStyles';
-import colors from './Colors'
+import colors from './colors'
 
 const Post = ({ user, restaurant, category, review, imageUri, profilePicUri }) => {
   const [liked, setLiked] = useState(false);

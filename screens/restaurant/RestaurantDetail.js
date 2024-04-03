@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Octicons } from '@expo/vector-icons'; // Make sure to install expo vector icons
-import colors from '../../components/Colors';
+import colors from '../../components/colors';
 import globalStyles from '../../components/GlobalStyles';
 
 const RestaurantDetail = ({ iconName, children }) => {

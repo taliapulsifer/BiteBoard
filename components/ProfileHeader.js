@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
-import colors from './Colors';
+import colors from './colors';
 import globalStyles from './GlobalStyles';
 
 const ProfileHeader = ({ name, reviews, eats }) => {
