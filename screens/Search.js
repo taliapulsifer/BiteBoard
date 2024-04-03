@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet, View, TextInput, TouchableOpacity, Image, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Octicons } from '@expo/vector-icons'; 
@@ -6,8 +6,30 @@ import globalStyles from '../components/GlobalStyles';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Search() {
-
+  
+  const mockRestaurants = [
+    { id: 1, name: "K-BOP Korean Cuisine", address: "123 Street, City", tags: ["Korean", "Vegetarian", "Vegan"], rating: 4.5, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
+    { id: 2, name: "Taco Haven", address: "456 Avenue, City", tags: ["Mexican", "Gluten Free"], rating: 4.2, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
+  ];
+  
   const navigation = useNavigation();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredResults, setFilteredResults] = useState([]);
+
+  const filterRestaurants = (query) => {
+    if (!query.trim()) {
+      setFilteredResults([]);
+    } else {
+      const filtered = mockRestaurants.filter((restaurant) =>
+        restaurant.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredResults(filtered);
+    }
+  };
+
+  useEffect(() => {
+    filterRestaurants(searchQuery);
+  }, [searchQuery]);
 
   return (
     <ScrollView style={styles.container}>
@@ -15,43 +37,21 @@ export default function Search() {
         <TextInput
           style={styles.searchInput}
           placeholder="Search"
-          // onChangeText={...} // Define this
-          // value={...} // Define this
+          onChangeText={setSearchQuery}
+          value={searchQuery}
         />
         <TouchableOpacity style={styles.searchIcon}>
           <Icon name="search" size={20} />
         </TouchableOpacity>
       </View>
 
-      {/* This is a placeholder for your restaurant cards, which you would map through your data */}
-      {/* For example */}
-      {/* {restaurants.map((restaurant) => (
-        <RestaurantCard key={restaurant.id} data={restaurant} />
-      ))} */}
-      
-      {/* Placeholder for restaurant card */}
-      <View style={styles.card}>
-      <Text style={styles.categoryHeader}>KOREAN</Text>
-      <Image style={styles.restaurantImage} source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }} />
-      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate('Restaurant')}>        
-      <Text style={styles.restaurantName}>K-BOP</Text>
+      {filteredResults.map((restaurant) => (
+      <TouchableOpacity key={restaurant.id} style={styles.card} onPress={() => navigation.navigate('Restaurant', { restaurantId: restaurant.id })}>
+        <View>
+          <Text style={styles.restaurantName}>{restaurant.name}</Text>
+        </View>
       </TouchableOpacity>
-
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={globalStyles.horizontalScroll}>
-        <View style={styles.ratingAndTags}>
-            <Text style={globalStyles.infoTag}>Open</Text>
-            <Text style={globalStyles.infoTag}>Korean</Text>
-            <Text style={globalStyles.infoTag}> 4.5 <Octicons name="star-fill" size={16} color="black" /></Text>
-            <Text style={globalStyles.infoTag}>$$</Text>
-            <Text style={globalStyles.dietTag}>Vegetarian</Text>
-            <Text style={globalStyles.dietTag}>Vegan</Text>
-            <Text style={globalStyles.dietTag}>Gluten Free</Text>
-            <Text style={globalStyles.accessibilityTag}>Wheelchair Ramp</Text>
-          </View>
-      </ScrollView>
-      </View>
-      
-      {/* Repeat the restaurant card for other categories */}
+    ))}
 
     </ScrollView>
   );
@@ -101,35 +101,29 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    padding: 15,
+    paddingVertical: 10, 
+    paddingHorizontal: 15, // Adjust padding as needed
     margin: 10,
-    alignItems: 'center', // Centers content horizontally
+    flexDirection: 'row', // Align items in a row
+    alignItems: 'center', // Center items vertically
+    justifyContent: 'space-between', // Space items evenly
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 2,
   },
-  categoryHeader: {
-    fontSize: 20,
-    marginBottom: 10,
-    textAlign: 'center', // Center text horizontally
-    width: '100%', // Ensure it occupies the full width
+  restaurantName: {
+    fontSize: 16, // Adjust font size as needed
+    fontWeight: 'bold', // Make the font bold
+  },
+  restaurantAddress: {
+    fontSize: 12, // Adjust font size as needed
+    color: '#666', // Adjust text color as needed
   },
   touchable: {
     alignSelf: 'stretch', // Stretch to the parent width
     alignItems: 'center', // Center children horizontally
-  },
-  restaurantImage: {
-    width: '100%',
-    height: 200,
-    borderRadius: 10,
-  },
-  restaurantName: {
-    fontSize: 20,
-    textAlign: 'center',
-    marginTop: 10,
-    width: '100%',
   },
   ratingAndTags: {
     flexDirection: 'row',
