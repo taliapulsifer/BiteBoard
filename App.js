@@ -1,3 +1,4 @@
+import Amplify from 'aws-amplify';
 import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
@@ -5,19 +6,10 @@ import Navigation from './Navigation';
 import { SafeAreaProvider, SafeAreaView, Text } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { ActivityIndicator, View } from 'react-native';
-import Amplify from 'aws-amplify';
-import { Auth } from 'aws-amplify'; // Import Auth from aws-amplify
+import { withAuthenticator } from 'aws-amplify-react-native';
+import config from './amplifyconfiguration.json';
 
-// Configure Amplify
-Amplify.configure({
-  Auth: {
-    region: 'us-east-1',
-    userPoolId: 'us-east-1_kjX39z76G',
-    userPoolWebClientId: '6dgttjph9mm7498l201kn422th',
-  },
-});
-
-export default function App() {
+export function App() {
   let [fontsLoaded] = useFonts({
     'Poppins': require('./assets/fonts/Poppins-Regular.ttf'),
     'PoppinsSemiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
@@ -43,4 +35,6 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
+const AppWithAuthenticator = withAuthenticator(App);
+export default AppWithAuthenticator;
 

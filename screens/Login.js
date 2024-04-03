@@ -4,7 +4,6 @@ import colors from '../components/colors';
 import { Octicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Auth } from 'aws-amplify';
-import createUser from createUser
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -108,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Signup;
+export default LoginPage;
