@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native';
 import colors from '../components/colors';
+import { Octicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
@@ -18,7 +19,7 @@ const LoginPage = () => {
       {/* Logo and Title */}
       <View style={styles.logoContainer}>
         {/* Replace with Image component if you have a logo image */}
-        <Text style={styles.logo}>🍴</Text>
+        <Text><Octicons name="bold" size={50} color="black" /></Text>
         <Text style={styles.title}>Log In</Text>
       </View>
       
@@ -63,9 +64,6 @@ const styles = StyleSheet.create({
   logoContainer: {
     alignItems: 'center',
     marginBottom: 20,
-  },
-  logo: {
-    fontSize: 50,
   },
   title: {
     fontSize: 24,

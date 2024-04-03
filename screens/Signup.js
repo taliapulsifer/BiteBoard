@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native';
-
-// Assuming colors is a valid import that provides color values
+import { Octicons } from '@expo/vector-icons';
 import colors from '../components/colors';
 
 const Signup = () => {
@@ -17,7 +16,7 @@ const Signup = () => {
 
       {/* Logo and Title */}
       <View style={styles.logoContainer}>
-        <Text style={styles.logo}>🍴</Text>
+      <Text><Octicons name="bold" size={50} color="black" /></Text>
         <Text style={styles.title}>Sign Up</Text>
       </View>
 
@@ -55,9 +54,6 @@ const styles = StyleSheet.create({
   logoContainer: {
     alignItems: 'center',
     marginBottom: 20,
-  },
-  logo: {
-    fontSize: 50,
   },
   title: {
     fontFamily: 'PoppinsMedium',
