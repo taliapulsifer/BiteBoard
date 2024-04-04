@@ -5,9 +5,12 @@ import Navigation from './Navigation';
 import { SafeAreaProvider, SafeAreaView, Text } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { ActivityIndicator, View } from 'react-native';
+import {withAuthenticator, useAuthenticator} from '@aws-amplify/ui-react-native';
+import amplifyconfig from './amplifyconfiguration.json';
+import { Amplify } from 'aws-amplify';
+Amplify.configure(amplifyconfig);
 
-
-export default function App() {
+const App = () => {
   let [fontsLoaded] = useFonts({
     'Poppins': require('./assets/fonts/Poppins-Regular.ttf'),
     'PoppinsSemiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
@@ -34,3 +37,4 @@ export default function App() {
   );
 }
 
+export default withAuthenticator(App);
