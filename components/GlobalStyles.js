@@ -2,6 +2,28 @@ import { StyleSheet } from 'react-native';
 import colors from './colors';
 
 const styles = StyleSheet.create({
+  detailItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    backgroundColor: colors.background,
+    margin: 10,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  detailTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    textAlign: 'center',
+    marginLeft: 10,
+    marginRight: 5,
+    gap: 30,
+  },
   horizontalScroll: {
     marginTop: 20, 
     marginLeft: 10,

@@ -3,12 +3,13 @@ import { ScrollView, StyleSheet, View, TextInput, TouchableOpacity, Image, Text 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import globalStyles from '../components/GlobalStyles';
 import { useNavigation } from '@react-navigation/native';
+import colors from '../components/colors';
 
 export default function Search() {
   
   const mockRestaurants = [
-    { id: 1, name: "K-BOP Korean Cuisine", address: "123 Street, City", tags: ["Korean", "Vegetarian", "Vegan"], rating: 4.5, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
-    { id: 2, name: "Taco Haven", address: "456 Avenue, City", tags: ["Mexican", "Gluten Free"], rating: 4.2, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
+    { id: 1, name: "K-BOP", address: "123 Street, City", tags: ["Korean", "Vegetarian", "Vegan"], rating: 4.5, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
+    { id: 2, name: "Torchy's Tacos", address: "456 Avenue, City", tags: ["Mexican", "Gluten Free"], rating: 4.2, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
   ];
   
   const navigation = useNavigation();
@@ -46,8 +47,10 @@ export default function Search() {
 
       {filteredResults.map((restaurant) => (
       <TouchableOpacity key={restaurant.id} style={styles.card} onPress={() => navigation.navigate('Restaurant', { restaurantId: restaurant.id })}>
-        <View>
-          <Text style={styles.restaurantName}>{restaurant.name}</Text>
+        <View style={styles.detailItem}>
+          <View style={styles.detailTextContainer}>
+              <Text style={globalStyles.infoText}>{restaurant.name}</Text>
+          </View>
         </View>
       </TouchableOpacity>
     ))}
@@ -97,39 +100,30 @@ const styles = StyleSheet.create({
   filterText: {
     fontSize: 14,
   },
-  card: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    paddingVertical: 10, 
-    paddingHorizontal: 15, // Adjust padding as needed
+  detailItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    backgroundColor: colors.background,
     margin: 10,
-    flexDirection: 'row', // Align items in a row
-    alignItems: 'center', // Center items vertically
-    justifyContent: 'space-between', // Space items evenly
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 2,
+    shadowRadius: 4,
     elevation: 2,
   },
-  restaurantName: {
-    fontSize: 16, // Adjust font size as needed
-    fontFamily: 'PoppinsMedium', // Make the font bold
+  detailTextContainer: {
+    marginLeft: 10,
+    marginRight: 5,
   },
-  restaurantAddress: {
-    fontSize: 12, // Adjust font size as needed
-    color: '#666', // Adjust text color as needed
+  detailText: {
+    fontSize: 18,
+    color: colors.textPrimary,
   },
   touchable: {
     alignSelf: 'stretch', // Stretch to the parent width
     alignItems: 'center', // Center children horizontally
-  },
-  ratingAndTags: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 0,
-    width: '100%',
-    flexWrap: 'wrap',
   },
 });
