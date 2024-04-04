@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet, View, TextInput, TouchableOpacity, Image, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Octicons } from '@expo/vector-icons'; 
 import globalStyles from '../components/GlobalStyles';
 import { useNavigation } from '@react-navigation/native';
 
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
   },
   restaurantName: {
     fontSize: 16, // Adjust font size as needed
-    fontWeight: 'bold', // Make the font bold
+    fontFamily: 'PoppinsMedium', // Make the font bold
   },
   restaurantAddress: {
     fontSize: 12, // Adjust font size as needed

@@ -4,6 +4,7 @@ import { Octicons } from '@expo/vector-icons';
 import colors from '../components/colors';
 
 const Signup = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,8 +21,15 @@ const Signup = () => {
         <Text style={styles.title}>Sign Up</Text>
       </View>
 
-      {/* Email and Password Input */}
+      {/* Username, Email, and Password Input */}
       <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          onChangeText={setUsername}
+          value={username}
+          autoCapitalize="none"
+        />
         <TextInput
           style={styles.input}
           placeholder="Email Address"

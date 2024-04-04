@@ -9,11 +9,8 @@ const TopBar = ({ navigation }) => {
       <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
         <Octicons name="arrow-left" size={26} color={colors.textPrimary} />
       </TouchableOpacity>
-
-      {/* Space filler to push the hamburger to the right */}
       <View style={{ flex: 1 }} />
-
-      <TouchableOpacity style={styles.hamburgerButton} onPress={() => {/* Handle menu opening logic here */}}>
+      <TouchableOpacity style={styles.hamburgerButton} onPress={() => {navigation.openDrawer()}}>
         <Octicons name="three-bars" size={26} color={colors.textPrimary} />
       </TouchableOpacity>
     </View>
