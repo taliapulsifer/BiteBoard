@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, Text, ScrollView } from 'react-native'; // Changed ScrollAreaView to ScrollView
+import { StyleSheet, View, TouchableOpacity, Text, ScrollView } from 'react-native'; // Changed ScrollAreaView to ScrollView
 import colors from '../components/colors';
 import globalStyles from '../components/GlobalStyles';
 import { Octicons } from '@expo/vector-icons';
