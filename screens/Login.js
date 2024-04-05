@@ -3,6 +3,7 @@ import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-nativ
 import colors from '../components/colors';
 import { Octicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { confirmSignUp } from 'aws-amplify/auth';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
