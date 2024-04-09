@@ -9,7 +9,7 @@ const UserProfile = () => {
   const profileData = {
     name: 'OLIVIA',
     reviews: 1,
-    eats: 3,
+    eats: 1,
   };
   
   const mockPosts = [

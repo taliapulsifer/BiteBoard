@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import { Octicons } from '@expo/vector-icons'; // Removed unused FontAwesome import
+import { Octicons } from '@expo/vector-icons';
 import globalStyles from './GlobalStyles';
 import colors from './colors';
 
@@ -23,7 +23,13 @@ const Post = ({ user, restaurant, cuisine, cost, rating, review, imageUri, profi
 
   return (
     <View style={styles.container} accessible accessibilityLabel={`Post by ${user}`}>
-      <View style={styles.header}>
+          <TouchableOpacity
+          onPress={() => navigation.navigate('UserProfile', { username: user })}
+          accessible
+          accessibilityRole="button"
+          accessibilityLabel={`Navigate to ${user} profile`}
+        >  
+        <View style={styles.header}>      
         <Image
           source={getImageSource(profilePicUri)}
           style={globalStyles.profilePic}
@@ -32,6 +38,7 @@ const Post = ({ user, restaurant, cuisine, cost, rating, review, imageUri, profi
         />
         <Text style={styles.username}>{user}</Text>
       </View>
+      </TouchableOpacity>
       <Image
         source={getImageSource(imageUri)}
         style={styles.image}

@@ -1,16 +1,61 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
-import RestaurantDetail from './RestaurantDetail';
 import colors from '../../components/colors';
+import images from '../../assets/images/images'; 
 import globalStyles from '../../components/GlobalStyles';
+import Post from '../../components/Post';
 import { useNavigation } from '@react-navigation/native';
 
-
 const RestaurantProfile = () => {
-
-    // use navigation
     const navigation = useNavigation();
+
+    const mockPosts = [
+        {
+            id: 4,
+            user: 'Sarah',
+            restaurant: 'K-BOP',
+            cuisine: "Korean",
+            cost: '$$',
+            rating: '4.5/5',
+            review: 'Wonderful place!',
+            imageUri: images.kbop4,
+            profilePicUri: images.pfp4
+          },
+        {
+            id: 2,
+            user: 'Talia',
+            restaurant: 'K-BOP',
+            cuisine: "Korean",
+            cost: '$$',
+            rating: '5/5',        
+            review: 'This place has the best Korean food in San Marcos! The black tea boba is my favorite.',
+            imageUri: images.kbop1,
+            profilePicUri: images.pfp2
+        },
+        {
+            id: 3,
+            user: 'Mimi',
+            restaurant: 'K-BOP',
+            cuisine: "Korean",
+            cost: '$$',
+            rating: '4/5',        
+            review: 'Definitely my favorite place to eat in San Marcos. The staff is so sweet, the food is delicious, and the ambiance is so cozy. Only downside is the limited seating.',
+            imageUri: images.kbop3,
+            profilePicUri: images.pfp3,
+        },
+        {
+            id: 1,
+            user: 'Olivia',
+            restaurant: 'K-BOP',
+            cuisine: "Korean",
+            cost: '$$',
+            rating: '3/5',
+            review: 'Loved these vegetarian dumplings!',
+            imageUri: images.kbop2,
+            profilePicUri: images.pfp1
+        },
+    ]
 
     // bookmark JS
     const [bookmarked, setBookmarked] = useState(false); // This should be inside the component
@@ -43,59 +88,34 @@ const RestaurantProfile = () => {
                             </TouchableOpacity> 
                         </View>
                         <View style={styles.navBarContainer}>
-                            <TouchableOpacity><Text style={globalStyles.headerText}>Overview</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={globalStyles.headerText}>Photos</Text></TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => navigation.navigate('Reviews')}
+                                onPress={() => navigation.navigate('Overview')}
                                 accessible
                                 accessibilityRole="button"
-                                accessibilityLabel={`Navigate to restaurant review posts`}>  
-                                <Text style={globalStyles.headerText}>Reviews</Text>
-                            </TouchableOpacity>
+                                accessibilityLabel={`Navigate to general information page for this restaurant`}>  
+                                <Text style={globalStyles.headerText}>Overview</Text>
+                            </TouchableOpacity>                            
+                            <TouchableOpacity><Text style={globalStyles.headerText}>Photos</Text></TouchableOpacity>
+                            <TouchableOpacity><Text style={globalStyles.headerText}>Reviews</Text></TouchableOpacity>
                         </View>
                     </View>
                 </View>  
                 
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={globalStyles.horizontalScroll}>
-                    <View style={styles.categoryContainer}>
-                        <Text style={globalStyles.headerText}>Rating</Text>
-                        <Text style={globalStyles.infoText}>4.5/5</Text>
-                    </View>
-                    <View style={styles.categoryContainer}>
-                        <Text style={globalStyles.headerText}>Price</Text>
-                        <Text style={globalStyles.infoText}>$10-20</Text>
-                    </View>
-                    <View style={styles.categoryContainer}>
-                        <Text style={globalStyles.headerText}>Cuisine</Text>
-                        <Text style={globalStyles.infoText}>Korean</Text>
-                    </View>
-                    <View style={styles.categoryContainer}>
-                        <Text style={globalStyles.headerText}>Vibe</Text>
-                        <Text style={globalStyles.infoText}>Casual</Text>
-                    </View>
-                    </ScrollView>
+                {mockPosts.map((post) => (    
+                    <Post
+                    key={post.id}
+                    user={post.user}
+                    restaurant={post.restaurant}
+                    cuisine={post.cuisine}
+                    cost={post.cost}
+                    rating={post.rating}
+                    review={post.review}
+                    imageUri={post.imageUri}
+                    profilePicUri={post.profilePicUri}
+                    />
+                ))}
+                <View style={{marginBottom: 20}}></View>
 
-                <View style={styles.tagSection}>
-                    <View style={styles.tagSectionTitle}><Text style={globalStyles.headerText}>Dietary Options</Text></View>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={globalStyles.horizontalScroll2}>
-                        <View style={styles.tagRow}>
-                            <Text style={globalStyles.dietTag}>Vegetarian (15)</Text>
-                            <Text style={globalStyles.dietTag}>Vegan (2)</Text>
-                            <Text style={globalStyles.dietTag}>Gluten Free (1)</Text>
-                        </View>
-                    </ScrollView>
-
-                    <View style={styles.tagSectionTitle}><Text style={globalStyles.headerText}>Accessibility</Text></View>
-                    <View style={styles.tagRow}>
-                        <Text style={globalStyles.accessibilityTag}>Wheelchair ramp (10)</Text>
-                    </View>
-                </View>
-
-                <View style={styles.detailSection}>
-                    <RestaurantDetail iconName="location">{`301 N Guadalupe St Ste 164, San Marcos, TX 78666`}</RestaurantDetail>
-                    <RestaurantDetail iconName="clock">{`Open · Closes 9:30 PM`}</RestaurantDetail>
-                    <RestaurantDetail iconName="globe">{`http://kbopstx.com/`}</RestaurantDetail>
-                </View>
             </ScrollView>
         </SafeAreaView>
     );
