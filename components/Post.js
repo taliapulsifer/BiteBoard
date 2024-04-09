@@ -1,48 +1,86 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import { Octicons } from '@expo/vector-icons'; // Make sure to install expo vector icons
-import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
+import { Octicons } from '@expo/vector-icons'; // Removed unused FontAwesome import
 import globalStyles from './GlobalStyles';
-import colors from './colors'
+import colors from './colors';
 
-const Post = ({ user, restaurant, category, review, imageUri, profilePicUri }) => {
+const Post = ({ user, restaurant, cuisine, cost, rating, review, imageUri, profilePicUri }) => {
   const [liked, setLiked] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
   const navigation = useNavigation();
 
   const toggleLike = () => {
     setLiked(!liked);
   };
 
-  const toggleBookmark = () => {
-    setBookmarked(!bookmarked);
+  // Helper function to determine the source type
+  const getImageSource = (image) => {
+    if (typeof image === 'number') {
+      return image;
+    }
+    return { uri: image };
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} accessible accessibilityLabel={`Post by ${user}`}>
       <View style={styles.header}>
-        <Image source={{ uri: profilePicUri }} style={globalStyles.profilePic} />
+        <Image
+          source={getImageSource(profilePicUri)}
+          style={globalStyles.profilePic}
+          accessible
+          accessibilityLabel={`Profile picture of ${user}`}
+        />
         <Text style={styles.username}>{user}</Text>
       </View>
-      <Image source={{ uri: imageUri }} style={styles.image} />
+      <Image
+        source={getImageSource(imageUri)}
+        style={styles.image}
+        accessible
+        accessibilityLabel={`Image from ${user} about ${restaurant}`}
+      />
       <View style={styles.content}>
-        <TouchableOpacity onPress={() => navigation.navigate('Restaurant', { restaurantName: restaurant })}>
-        <View style={styles.restaurantContainer}>
-        <Octicons name={'location'} size={24} color={colors.textPrimary} />
-          <Text style={globalStyles.headerText}>{restaurant.toUpperCase()}</Text>
-        </View>
-        <Text style={globalStyles.infoSmall}>{category}</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Restaurant', { restaurantName: restaurant })}
+          accessible
+          accessibilityRole="button"
+          accessibilityLabel={`Navigate to ${restaurant} details`}
+        >
+          <View style={styles.restaurantContainer}>
+            <Octicons name={'location'} size={24} color={colors.textPrimary} />
+            <Text style={globalStyles.headerText}>{restaurant.toUpperCase()}</Text>
+          </View>
         </TouchableOpacity>
         <Text style={globalStyles.infoSmall}>{review}</Text>
       </View>
       <View style={styles.actionContainer}>
-        <TouchableOpacity onPress={toggleBookmark} style={styles.bookmarkButton}>
-          <FontAwesome name={bookmarked ? 'bookmark' : 'bookmark-o'} size={26} color={bookmarked ? colors.accentSecondary : 'black'} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={toggleLike} style={styles.likeButton}>
-          <Octicons name={liked ? 'heart-fill' : 'heart' } size={26} color={liked ? colors.accentSecondary : 'black' } />
-        </TouchableOpacity>
+        <View style={styles.categoryContainer}>
+          <Text style={styles.categoryTag}>{cuisine}</Text>
+        </View>
+        <View style={styles.categoryContainer}>
+          <Text style={styles.categoryTag}>{cost}</Text>
+        </View>
+        <View style={styles.categoryContainer}>
+          <Text style={styles.categoryTag}>{rating}</Text>
+        </View>
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity
+            onPress={toggleLike}
+            style={styles.likeButton}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel={liked ? `Unlike ${restaurant}` : `Like ${restaurant}`}
+          >
+            <Octicons name={liked ? 'heart-fill' : 'heart'} size={26} color={liked ? colors.accentSecondary : 'black'} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.likeButton}
+            accessible
+            accessibilityRole="button"
+            accessibilityLabel={`Comment on ${restaurant}`}
+          >
+            <Octicons name="comment" size={26} color="black" />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -69,12 +107,14 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   username: {
+    fontFamily: 'PoppinsMedium',
     color: colors.textPrimary,
     marginLeft: 10,
     flex: 1,
   },
   image: {
     width: '100%',
+    height: 'auto',
     aspectRatio: 1,
   },
   content: {
@@ -84,9 +124,9 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
     flexDirection: 'row',
     gap: 10,
-
   },
   restaurant: {
+    fontFamily: 'PoppinsMedium',
     color: colors.textPrimary,
     fontSize: 20,
   },
@@ -105,9 +145,29 @@ const styles = StyleSheet.create({
   },
   actionContainer: {
     flexDirection: 'row',
+    alignItems: 'textAlign',
+    padding: 15,
+    justifyContent: 'space-between', // This aligns children to both ends
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end', // This ensures buttons are aligned to the right
+  },
+  infoContainer: {
+    flexDirection: 'row',
     justifyContent: 'flex-end',
   },
+  categoryTag: {
+    fontSize: 15, // Adjusted for better space management
+    fontFamily: 'Poppins',
+    color: colors.accentPrimary,
+    backgroundColor: colors.accentTertiary,
+    borderRadius: 15,
+    paddingVertical: 7,
+    paddingHorizontal: 10,
+    margin: 0, // Ensure there's space around each tag
+  },
 });
-
 
 export default Post;

@@ -29,6 +29,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10
   },
+  horizontalScroll2: {
+    marginTop: 0, 
+    marginLeft: 0,
+    marginRight: 10
+  },
   profilePic: {
     width: 30,
     height: 30,
@@ -72,6 +77,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontFamily: 'PoppinsMedium',
     fontSize: 18,
+    margin: 0,
   },
   infoSmall: {
     fontFamily: 'Poppins',

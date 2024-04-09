@@ -1,33 +1,42 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import colors from './colors';
-import globalStyles from './GlobalStyles';
+import images from '../assets/images/images';
 
 const ProfileHeader = ({ name, reviews, eats }) => {
-  const [followed, setFollowed] = useState(false); // Correctly place the useState hook inside the component
+  const [followed, setFollowed] = useState(false);
 
-  // Correct the function to use setFollowed
+  // Helper function to determine the source type
+  const getImageSource = (image) => {
+    if (typeof image === 'number') {
+      return image;
+    }
+    return { uri: image };
+  };
+
+  const imageUri = images.pfp1;
+
   const toggleFollow = () => {
     setFollowed(!followed);
   };
 
-  return ( // Added return statement for JSX
+  return (
     <View style={styles.whiteBackground}>
       <View style={styles.headerContainer}>
         <Image
           style={styles.profilePicture}
-          source={{ uri: 'profile_picture_url' }}
+          source={getImageSource(imageUri)}
           accessible={true}
-          accessibilityLabel="Profile picture"
+          accessibilityLabel={`${name}'s profile picture`}
         />
         <Text style={styles.nameText} accessibilityRole="header">
           {name}
         </Text>
         <View style={styles.statsContainer}>
-          <Text style={styles.statsText}>
+          <Text style={styles.statsText} accessible accessibilityLabel={`${eats} Eats`}>
             {eats} Eats
           </Text>
-          <Text style={styles.statsText}>
+          <Text style={styles.statsText} accessible accessibilityLabel={`${reviews} Reviews`}>
             {reviews} Reviews
           </Text>
           <TouchableOpacity
@@ -36,34 +45,11 @@ const ProfileHeader = ({ name, reviews, eats }) => {
             accessibilityLabel={followed ? "Unfollow" : "Follow"}
             accessibilityRole="button"
             accessibilityHint="Double tap to toggle follow state"
-            onPress={toggleFollow} // Attach the toggleFollow function to onPress
+            onPress={toggleFollow}
           >
             <Text style={styles.friendButtonText}>{followed ? "FOLLOWING" : "FOLLOW"}</Text>
           </TouchableOpacity>
         </View>
-      </View>
-      <View style={styles.navBarContainer}>
-        <TouchableOpacity
-          accessible={true}
-          accessibilityLabel="Activity"
-          accessibilityRole="button"
-        >
-          <Text style={globalStyles.headerText}>Activity</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          accessible={true}
-          accessibilityLabel="Photos"
-          accessibilityRole="button"
-        >
-          <Text style={globalStyles.headerText}>Photos</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          accessible={true}
-          accessibilityLabel="Reviews"
-          accessibilityRole="button"
-        >
-          <Text style={globalStyles.headerText}>Reviews</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );

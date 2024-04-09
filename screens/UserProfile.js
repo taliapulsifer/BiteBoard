@@ -1,15 +1,30 @@
 import React from 'react';
 import Post from '../components/Post';
 import ProfileHeader from '../components/ProfileHeader';
-import { SafeAreaView, ScrollView, View, Text } from 'react-native';
+import images from '../assets/images/images';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 
 const UserProfile = () => {
 
   const profileData = {
     name: 'OLIVIA',
-    reviews: 13,
-    eats: 30,
+    reviews: 1,
+    eats: 3,
   };
+  
+  const mockPosts = [
+    {
+      id: 1,
+      user: 'Olivia',
+      restaurant: 'K-BOP',
+      cuisine: "Korean",
+      cost: '$$',
+      rating: '3/5',
+      review: 'Loved these vegetarian dumplings!',
+      imageUri: images.kbop2,
+      profilePicUri: images.pfp1
+    },
+  ];
 
   return (
   
@@ -20,14 +35,19 @@ const UserProfile = () => {
           reviews={profileData.reviews}
           eats={profileData.eats}
         />
+        {mockPosts.map((post) => (    
         <Post
-          user="OLIVIA"
-          restaurant="KBOP"
-          category="KOREAN • $$ • CASUAL"
-          review="Loved the vegetarian dumplings! Definitely a must try here."
-          imageUri="https://reactnative.dev/img/tiny_logo.png"
-          profilePicUri="https://reactnative.dev/img/tiny_logo.png"
+          key={post.id}
+          user={post.user}
+          restaurant={post.restaurant}
+          cuisine={post.cuisine}
+          cost={post.cost}
+          rating={post.rating}
+          review={post.review}
+          imageUri={post.imageUri}
+          profilePicUri={post.profilePicUri}
         />
+      ))}
         <View style={{marginBottom: 20}}></View>
       </ScrollView>
     </SafeAreaView>

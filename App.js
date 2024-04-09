@@ -2,10 +2,9 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import Navigation from './Navigation';
-import { SafeAreaProvider, SafeAreaView, Text } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useFonts } from 'expo-font';
 import { ActivityIndicator, View } from 'react-native';
-
 
 export default function App() {
   let [fontsLoaded] = useFonts({

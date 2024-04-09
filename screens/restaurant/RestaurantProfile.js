@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
-import { Octicons } from '@expo/vector-icons'; // Make sure to install expo vector icons
 import RestaurantDetail from './RestaurantDetail';
 import colors from '../../components/colors';
 import globalStyles from '../../components/GlobalStyles';
@@ -67,14 +66,17 @@ const RestaurantProfile = () => {
 
                 <View style={styles.tagSection}>
                     <View style={styles.tagSectionTitle}><Text style={globalStyles.headerText}>Dietary Options</Text></View>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={globalStyles.horizontalScroll2}>
                         <View style={styles.tagRow}>
-                        <Text style={globalStyles.dietTag}>Vegetarian</Text>
-                        <Text style={globalStyles.dietTag}>Vegan</Text>
-                        <Text style={globalStyles.dietTag}>Gluten Free</Text>
-                    </View>
+                            <Text style={globalStyles.dietTag}>Vegetarian (15)</Text>
+                            <Text style={globalStyles.dietTag}>Vegan (2)</Text>
+                            <Text style={globalStyles.dietTag}>Gluten Free (1)</Text>
+                        </View>
+                    </ScrollView>
+
                     <View style={styles.tagSectionTitle}><Text style={globalStyles.headerText}>Accessibility</Text></View>
                     <View style={styles.tagRow}>
-                        <Text style={globalStyles.accessibilityTag}>Wheelchair ramp</Text>
+                        <Text style={globalStyles.accessibilityTag}>Wheelchair ramp (10)</Text>
                     </View>
                 </View>
 
@@ -143,15 +145,16 @@ const styles = StyleSheet.create({
         elevation: 2,
       },
     tagRow: {
+        margnTop: 0,
         marginHorizontal: 20,
-        marginBottom: 20, // Increased bottom margin for space after the tags
+        marginBottom: 20, 
         flexDirection: 'row',
         justifyContent: 'flex-start', // Align tags to the start
         flexWrap: 'wrap',
     },
     tagSectionTitle: {
-        marginLeft: 20, // Align with the tagRow's margin
-        marginBottom: 10, // Space before the tags start
+        marginLeft: 20, 
+        marginBottom: 10, 
         fontSize: 20,
         color: colors.text,
     },
