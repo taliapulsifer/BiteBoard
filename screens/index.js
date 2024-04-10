@@ -5,6 +5,8 @@ import UserProfile from './UserProfile';
 import SavedRestaurants from './SavedRestaurants';
 import VisitedRestaurants from './VisitedRestaurants';
 import Reviews from './restaurant/Reviews';
+import CreatePost from './restaurant/CreatePost';
 
 export { Feed, RestaurantProfile, Search, UserProfile,
-         SavedRestaurants, VisitedRestaurants, Reviews };
+         SavedRestaurants, VisitedRestaurants, Reviews,
+         CreatePost };

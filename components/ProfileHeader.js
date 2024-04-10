@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import colors from './colors';
+import globalStyles from './GlobalStyles';
+
 import images from '../assets/images/images';
 
 const ProfileHeader = ({ name, reviews, eats }) => {
@@ -40,14 +42,14 @@ const ProfileHeader = ({ name, reviews, eats }) => {
             {reviews} Reviews
           </Text>
           <TouchableOpacity
-            style={styles.friendButton}
+            style={globalStyles.Button}
             accessible={true}
             accessibilityLabel={followed ? "Unfollow" : "Follow"}
             accessibilityRole="button"
             accessibilityHint="Double tap to toggle follow state"
             onPress={toggleFollow}
           >
-            <Text style={styles.friendButtonText}>{followed ? "FOLLOWING" : "FOLLOW"}</Text>
+            <Text style={globalStyles.ButtonText}>{followed ? "FOLLOWING" : "FOLLOW"}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -95,15 +97,6 @@ const styles = StyleSheet.create({
   statsText: {
     fontFamily: 'Poppins',
     fontSize: 16,
-  },
-  friendButton: {
-    backgroundColor: colors.accentSecondary,
-    padding: 10,
-    borderRadius: 5,
-  },
-  friendButtonText: {
-    fontFamily: 'Poppins',
-    color: 'white',
   },
 });
 

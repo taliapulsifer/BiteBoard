@@ -82,7 +82,16 @@ const styles = StyleSheet.create({
   infoSmall: {
     fontFamily: 'Poppins',
     fontSize: 15,
-  }
+  },
+  Button: {
+    backgroundColor: colors.accentSecondary,
+    padding: 10,
+    borderRadius: 5,
+  },
+  ButtonText: {
+    fontFamily: 'Poppins',
+    color: 'white',
+  },
 });
 
 export default styles;

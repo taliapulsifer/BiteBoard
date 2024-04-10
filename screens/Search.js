@@ -9,7 +9,8 @@ export default function Search() {
   
   const mockRestaurants = [
     { id: 1, name: "K-BOP", address: "123 Street, City", tags: ["Korean", "Vegetarian", "Vegan"], rating: 4.5, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
-    { id: 2, name: "Torchy's Tacos", address: "456 Avenue, City", tags: ["Mexican", "Gluten Free"], rating: 4.2, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
+    { id: 2, name: "KFC", address: "123 Street, City", tags: ["Chicken"], rating: 4.5, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
+    { id: 3, name: "Torchy's Tacos", address: "456 Avenue, City", tags: ["Mexican", "Gluten Free"], rating: 4.2, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
   ];
   
   const navigation = useNavigation();

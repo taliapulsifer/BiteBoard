@@ -25,6 +25,15 @@ const RestaurantProfile = () => {
       setAdded(!added); // This toggles the state
     };
 
+    // checkmark button onPress
+    const handlePress = () => {
+        // Toggle the 'added' state
+        setAdded(!added);
+
+        // Navigate to the 'CreatePost' screen
+        navigation.navigate('CreatePost');
+    };
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
 
@@ -38,7 +47,7 @@ const RestaurantProfile = () => {
                             <TouchableOpacity onPress={toggleBookmark} >
                                 <FontAwesome name={bookmarked ? 'bookmark' : 'bookmark-o'} size={40} color={bookmarked ? colors.accentSecondary : 'black'} />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={toggleAdd}>
+                            <TouchableOpacity onPress={handlePress}>
                                 <FontAwesome name={added ? 'check' : 'plus-circle'} size={40} color={added ? colors.accentSecondary : 'black'} />                            
                             </TouchableOpacity> 
                         </View>

@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Octicons } from '@expo/vector-icons';
-import { Feed, RestaurantProfile, Search, Reviews, UserProfile, VisitedRestaurants, SavedRestaurants} from './screens/index.js'; // Import all screens from index.js
+import { Feed, RestaurantProfile, Search, Reviews, UserProfile, VisitedRestaurants, SavedRestaurants, CreatePost} from './screens/index.js'; // Import all screens from index.js
 
 // ######## DRAWER NAVIGATION ########
 
@@ -36,6 +36,7 @@ function FeedStackGroup() {
             <FeedStack.Screen name="PosterProfile" component={UserProfile} />
             <FeedStack.Screen name="Reviews" component={Reviews} options={{ title: 'Reviews' }} />
             <FeedStack.Screen name="Overview" component={RestaurantProfile} options={{ title: 'Overview' }} />
+            <FeedStack.Screen name="CreatePost" component={CreatePost} options={{ title: 'CreatePost' }} />
         </FeedStack.Navigator>
     );
 }
@@ -52,7 +53,6 @@ function SearchStackGroup() {
         }}>
             <SearchStack.Screen name="SearchHome" component={Search} options={{ title: 'Search' }} />
             <SearchStack.Screen name="Retaurant" component={RestaurantProfile} />
-
         </SearchStack.Navigator>
     );
 }
@@ -65,7 +65,7 @@ function UserStackGroup() {
     return (
         <UserStack.Navigator 
             screenOptions={{
-                headerShown: false, // Enable the header
+                headerShown: false,
         }}>
             <UserStack.Screen name="UserProfileHome" component={UserProfile} options={{ title: 'UserProfile' }} />
         </UserStack.Navigator>
