@@ -17,17 +17,22 @@ const CreatePost = () => {
 
     const CustomRatingBar = () => {
         return (
-            <View style={styles.customRatingBarStyle}>
+            <View style={styles.customRatingBarStyle} accessible accessibilityLabel="Rating Bar">
                 {maxRating.map((item) => (
                     <TouchableOpacity 
                         activeOpacity={0.7}
                         key={item}
                         onPress={() => setDefaultRating(item)}
                         style={styles.starButton}
+                        accessible
+                        accessibilityRole="button"
+                        accessibilityLabel={`Rate ${item} stars`}
                     >
                         <Image
                             style={styles.starImgStyle}
                             source={{ uri: item <= defaultRating ? starImgFilled : starImgCorner }}
+                            accessible
+                            accessibilityLabel={item <= defaultRating ? "Filled Star" : "Empty Star"}
                         />
                     </TouchableOpacity>
                 ))}
@@ -44,7 +49,7 @@ const CreatePost = () => {
     };
 
     return (
-        <SafeAreaView style={styles.safeArea}>
+        <SafeAreaView style={styles.safeArea} accessible accessibilityLabel="Create Post Screen" accessibilityRole="adjustable">
             <KeyboardAvoidingView 
                 behavior={Platform.OS === "ios" ? "padding" : "height"} 
                 style={styles.keyboardAvoidingView}
@@ -53,10 +58,12 @@ const CreatePost = () => {
                 <ScrollView 
                     contentContainerStyle={styles.scrollViewStyle}
                     keyboardShouldPersistTaps='handled'
+                    accessible
+                    accessibilityLabel="Scrollable area for creating a post"
                 >
                     <View style={styles.contentContainer}>
                         <Text style={globalStyles.headerText}>Upload Image</Text>
-                        <TouchableOpacity style={styles.iconButton}>
+                        <TouchableOpacity style={styles.iconButton} accessible accessibilityRole="button" accessibilityLabel="Take photo" accessibilityHint="Opens the camera to take a photo">
                             <MaterialCommunityIcons name="camera-plus" size={40} color={colors.accentSecondary} />
                         </TouchableOpacity>
                         <Text style={globalStyles.headerText}>Add Rating</Text>
@@ -72,20 +79,26 @@ const CreatePost = () => {
                             placeholder="Type your review here..."
                             multiline
                             numberOfLines={4}
+                            accessible
+                            accessibilityLabel="Review Text Input"
+                            accessibilityHint="Type your review for the restaurant here"
                         />
                         <Text style={globalStyles.headerText}>Add Tags</Text>
-                        <View style={styles.tagsContainer}>
+                        <View style={styles.tagsContainer} accessible accessibilityLabel="Tag selection">
                             {tags.map((tag) => (
                                 <TouchableOpacity
                                     key={tag}
                                     style={[styles.tagButton, selectedTags.includes(tag) ? styles.tagButtonSelected : {}]}
                                     onPress={() => toggleTag(tag)}
+                                    accessible
+                                    accessibilityRole="button"
+                                    accessibilityLabel={`${selectedTags.includes(tag) ? "Remove tag" : "Add tag"} ${tag}`}
                                 >
                                     <Text style={styles.tagButtonText}>{tag}</Text>
                                 </TouchableOpacity>
                             ))}
                         </View>
-                        <TouchableOpacity style={globalStyles.Button}>
+                        <TouchableOpacity style={globalStyles.Button} accessible accessibilityRole="button" accessibilityLabel="Create post" accessibilityHint="Creates the post with the entered information">
                             <Text style={globalStyles.ButtonText}>Create Post</Text>
                         </TouchableOpacity>
                     </View>

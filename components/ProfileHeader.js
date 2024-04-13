@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native';
 import colors from './colors';
 import globalStyles from './GlobalStyles';
-
 import images from '../assets/images/images';
 
 const ProfileHeader = ({ name, reviews, eats }) => {
   const [followed, setFollowed] = useState(false);
 
-  // Helper function to determine the source type
   const getImageSource = (image) => {
     if (typeof image === 'number') {
       return image;
@@ -28,25 +26,41 @@ const ProfileHeader = ({ name, reviews, eats }) => {
         <Image
           style={styles.profilePicture}
           source={getImageSource(imageUri)}
-          accessible={true}
+          accessible
           accessibilityLabel={`${name}'s profile picture`}
+          accessibilityRole="image"
         />
-        <Text style={styles.nameText} accessibilityRole="header">
+        <Text 
+          style={styles.nameText} 
+          accessible 
+          accessibilityRole="header" 
+          accessibilityLabel={`Profile name: ${name}`}
+        >
           {name}
         </Text>
         <View style={styles.statsContainer}>
-          <Text style={styles.statsText} accessible accessibilityLabel={`${eats} Eats`}>
+          <Text 
+            style={styles.statsText} 
+            accessible 
+            accessibilityLabel={`${eats} total eats`}
+            accessibilityRole="text"
+          >
             {eats} Eats
           </Text>
-          <Text style={styles.statsText} accessible accessibilityLabel={`${reviews} Reviews`}>
+          <Text 
+            style={styles.statsText} 
+            accessible 
+            accessibilityLabel={`${reviews} total reviews`}
+            accessibilityRole="text"
+          >
             {reviews} Reviews
           </Text>
           <TouchableOpacity
             style={globalStyles.Button}
-            accessible={true}
-            accessibilityLabel={followed ? "Unfollow" : "Follow"}
+            accessible
             accessibilityRole="button"
-            accessibilityHint="Double tap to toggle follow state"
+            accessibilityLabel={followed ? "Unfollow" : "Follow"}
+            accessibilityHint="Double tap to toggle following status"
             onPress={toggleFollow}
           >
             <Text style={globalStyles.ButtonText}>{followed ? "FOLLOWING" : "FOLLOW"}</Text>
@@ -101,3 +115,4 @@ const styles = StyleSheet.create({
 });
 
 export default ProfileHeader;
+

@@ -27,19 +27,17 @@ const FeedStack = createNativeStackNavigator();
 // Function to wrap Feed related screens in the FeedStack
 function FeedStackGroup() {
     return (
-        <FeedStack.Navigator 
-            screenOptions={{
-                headerShown: false,
-        }}>
+        <FeedStack.Navigator screenOptions={{ headerShown: false }}>
             <FeedStack.Screen name="FeedHome" component={Feed} />
             <FeedStack.Screen name="Restaurant" component={RestaurantProfile} />
-            <FeedStack.Screen name="PosterProfile" component={UserProfile} />
+            <FeedStack.Screen name="PosterProfile" component={UserProfile} options={{ title: 'UserProfile' }} />
             <FeedStack.Screen name="Reviews" component={Reviews} options={{ title: 'Reviews' }} />
             <FeedStack.Screen name="Overview" component={RestaurantProfile} options={{ title: 'Overview' }} />
             <FeedStack.Screen name="CreatePost" component={CreatePost} options={{ title: 'CreatePost' }} />
         </FeedStack.Navigator>
     );
 }
+
 
 // Search: Instantiate the stack navigator
 const SearchStack = createNativeStackNavigator();

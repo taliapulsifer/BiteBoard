@@ -8,9 +8,9 @@ import colors from '../components/colors';
 export default function Search() {
   
   const mockRestaurants = [
-    { id: 1, name: "K-BOP", address: "123 Street, City", tags: ["Korean", "Vegetarian", "Vegan"], rating: 4.5, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
-    { id: 2, name: "KFC", address: "123 Street, City", tags: ["Chicken"], rating: 4.5, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
-    { id: 3, name: "Torchy's Tacos", address: "456 Avenue, City", tags: ["Mexican", "Gluten Free"], rating: 4.2, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
+    { id: 1, name: "K-BOP", address: "123 Street, City", tags: ["Korean", "Vegetarian", "Vegan"], rating: 4, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
+    { id: 2, name: "KFC", address: "123 Street, City", tags: ["Chicken"], rating: 3, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
+    { id: 3, name: "Torchy's Tacos", address: "456 Avenue, City", tags: ["Mexican", "Gluten Free"], rating: 5, imageUrl: "https://reactnative.dev/img/tiny_logo.png" },
   ];
   
   const navigation = useNavigation();
@@ -33,29 +33,45 @@ export default function Search() {
   }, [searchQuery]);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} accessible accessibilityLabel="Scrollable container for search results">
       <View style={styles.searchSection}>
         <TextInput
           style={styles.searchInput}
-          placeholder="Search"
+          placeholder="Search restaurants"
           onChangeText={setSearchQuery}
           value={searchQuery}
+          accessible
+          accessibilityRole="search"
+          accessibilityLabel="Search input"
+          accessibilityHint="Type the name of the restaurant you are looking for"
         />
-        <TouchableOpacity style={styles.searchIcon}>
+        <TouchableOpacity 
+          style={styles.searchIcon} 
+          accessible 
+          accessibilityRole="button"
+          accessibilityLabel="Search button"
+          accessibilityHint="Double tap to search"
+          onPress={() => filterRestaurants(searchQuery)}
+        >
           <Icon name="search" size={20} />
         </TouchableOpacity>
       </View>
 
-      {filteredResults.map((restaurant) => (
-      <TouchableOpacity key={restaurant.id} style={styles.card} onPress={() => navigation.navigate('Restaurant', { restaurantId: restaurant.id })}>
-        <View style={styles.detailItem}>
+      {filteredResults.map((restaurant, index) => (
+      <TouchableOpacity key={restaurant.id} style={styles.card} 
+        onPress={() => navigation.navigate('Restaurant', { restaurantId: restaurant.id })}
+        accessible
+        accessibilityRole="button"
+        accessibilityLabel={`Details for ${restaurant.name}, Tap for more`}
+        accessibilityHint="Navigates to the restaurant details page"
+      >
+        <View style={styles.detailItem} accessible accessibilityElementsHidden={true}>
           <View style={styles.detailTextContainer}>
               <Text style={globalStyles.infoText}>{restaurant.name}</Text>
           </View>
         </View>
       </TouchableOpacity>
     ))}
-
     </ScrollView>
   );
 };
@@ -87,21 +103,7 @@ const styles = StyleSheet.create({
   searchIcon: {
     padding: 10,
   },
-  filterContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 10,
-  },
-  filterButton: {
-    backgroundColor: '#ddd',
-    borderRadius: 20,
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-  },
-  filterText: {
-    fontSize: 14,
-  },
-  detailItem: {
+  card: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 20,
@@ -119,12 +121,10 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 5,
   },
-  detailText: {
-    fontSize: 18,
-    color: colors.textPrimary,
-  },
-  touchable: {
-    alignSelf: 'stretch', // Stretch to the parent width
-    alignItems: 'center', // Center children horizontally
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 10,
+    marginRight: 5,
   },
 });

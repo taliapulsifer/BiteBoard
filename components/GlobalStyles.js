@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   Button: {
-    backgroundColor: colors.accentSecondary,
+    backgroundColor: 'black',
     padding: 10,
     borderRadius: 5,
   },

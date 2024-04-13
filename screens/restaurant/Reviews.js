@@ -21,7 +21,7 @@ const RestaurantProfile = () => {
             review: 'Wonderful place!',
             imageUri: images.kbop4,
             profilePicUri: images.pfp4
-          },
+        },
         {
             id: 2,
             user: 'Talia',
@@ -55,67 +55,65 @@ const RestaurantProfile = () => {
             imageUri: images.kbop2,
             profilePicUri: images.pfp1
         },
-    ]
+    ];
 
-    // bookmark JS
-    const [bookmarked, setBookmarked] = useState(false); // This should be inside the component
-  
+    const [bookmarked, setBookmarked] = useState(false);
     const toggleBookmark = () => {
-      setBookmarked(!bookmarked); // This toggles the state
+      setBookmarked(!bookmarked);
     };
 
-    // add JS
-    const [added, setAdded] = useState(false); // This should be inside the component
+    const [added, setAdded] = useState(false);
     const toggleAdd = () => {
-      setAdded(!added); // This toggles the state
+      setAdded(!added);
     };
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
-
-            <ScrollView contentContainerStyle={{ paddingBottom: 60 }}>
+        <SafeAreaView style={{ flex: 1 }} accessible accessibilityLabel="Restaurant Profile Page" accessibilityRole="adjustable">
+            <ScrollView contentContainerStyle={{ paddingBottom: 60 }} accessible accessibilityLabel="Scrollable container for restaurant information">
                 <View style={styles.whiteBackground}>
                     <View style={styles.headerContainer}>
                         <View style={styles.titleContainer}>
-                            <Text style={styles.restaurantText}>K-BOP</Text>
+                            <Text style={styles.restaurantText} accessibilityRole="header">K-BOP</Text>
                         </View>
                         <View style={styles.titleIconsContainer}>
-                            <TouchableOpacity onPress={toggleBookmark} >
+                            <TouchableOpacity onPress={toggleBookmark} accessible accessibilityLabel={bookmarked ? "Unbookmark this restaurant" : "Bookmark this restaurant"} accessibilityRole="button">
                                 <FontAwesome name={bookmarked ? 'bookmark' : 'bookmark-o'} size={40} color={bookmarked ? colors.accentSecondary : 'black'} />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={toggleAdd}>
+                            <TouchableOpacity onPress={toggleAdd} accessible accessibilityLabel={added ? "Remove from list" : "Add to list"} accessibilityRole="button">
                                 <FontAwesome name={added ? 'check' : 'plus-circle'} size={40} color={added ? colors.accentSecondary : 'black'} />                            
                             </TouchableOpacity> 
                         </View>
                         <View style={styles.navBarContainer}>
-                            <TouchableOpacity
-                                onPress={() => navigation.navigate('Overview')}
-                                accessible
-                                accessibilityRole="button"
-                                accessibilityLabel={`Navigate to general information page for this restaurant`}>  
+                            <TouchableOpacity onPress={() => navigation.navigate('Overview')} accessible accessibilityRole="button" accessibilityLabel="Navigate to overview">
                                 <Text style={globalStyles.headerText}>Overview</Text>
                             </TouchableOpacity>                            
-                            <TouchableOpacity><Text style={globalStyles.headerText}>Photos</Text></TouchableOpacity>
-                            <TouchableOpacity><Text style={globalStyles.headerText}>Reviews</Text></TouchableOpacity>
+                            <TouchableOpacity accessible accessibilityRole="button" accessibilityLabel="View photos">
+                                <Text style={globalStyles.headerText}>Photos</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity accessible accessibilityRole="button" accessibilityLabel="View reviews">
+                                <Text style={globalStyles.headerText}>Reviews</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>  
                 
-                {mockPosts.map((post) => (    
+                {mockPosts.map((post) => (
                     <Post
-                    key={post.id}
-                    user={post.user}
-                    restaurant={post.restaurant}
-                    cuisine={post.cuisine}
-                    cost={post.cost}
-                    rating={post.rating}
-                    review={post.review}
-                    imageUri={post.imageUri}
-                    profilePicUri={post.profilePicUri}
+                        key={post.id}
+                        user={post.user}
+                        restaurant={post.restaurant}
+                        cuisine={post.cuisine}
+                        cost={post.cost}
+                        rating={post.rating}
+                        review={post.review}
+                        imageUri={post.imageUri}
+                        profilePicUri={post.profilePicUri}
+                        accessible
+                        accessibilityLabel={`Post by ${post.user} about ${post.restaurant}`}
+                        accessibilityHint="Tap to view post details"
                     />
                 ))}
-                <View style={{marginBottom: 20}}></View>
-
+                <View style={{marginBottom: 20}} accessible accessibilityElementsHidden={true}></View>
             </ScrollView>
         </SafeAreaView>
     );
@@ -141,8 +139,8 @@ const styles = StyleSheet.create({
     },
     titleIconsContainer: {
         flexDirection: 'row',
-        alignContent: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
         gap: 40,
         marginBottom: 20
     }, 
@@ -156,44 +154,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginBottom: 15,
-    },
-    categoryRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        marginTop: 10,
-      },
-      categoryContainer: {
-        width: 150,
-        padding: 15,
-        backgroundColor: colors.background,
-        margin: 5,
-        borderRadius: 10,
-        shadowColor: colors.shadow,
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 2,
-      },
-    tagRow: {
-        margnTop: 0,
-        marginHorizontal: 20,
-        marginBottom: 20, 
-        flexDirection: 'row',
-        justifyContent: 'flex-start', // Align tags to the start
-        flexWrap: 'wrap',
-    },
-    tagSectionTitle: {
-        marginLeft: 20, 
-        marginBottom: 10, 
-        fontSize: 20,
-        color: colors.text,
-    },
-    tagSection: {
-        marginTop: 20
-        },
-    detailSection: {
-        marginBottom: 20
     }
 });
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Post from '../components/Post';
 import ProfileHeader from '../components/ProfileHeader';
 import images from '../assets/images/images';
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView, ScrollView, View, Text } from 'react-native';
 
 const UserProfile = () => {
 
@@ -27,28 +27,38 @@ const UserProfile = () => {
   ];
 
   return (
-  
-    <SafeAreaView>
-      <ScrollView contentContainerStyle={{ paddingBottom: 60 }}>
+    <SafeAreaView accessible accessibilityLabel="User Profile Screen" accessibilityRole="adjustable">
+      <ScrollView 
+        contentContainerStyle={{ paddingBottom: 60 }}
+        accessible
+        accessibilityLabel="Scrollable user profile content"
+        accessibilityRole="scrollbar"
+      >
         <ProfileHeader
           name={profileData.name}
           reviews={profileData.reviews}
           eats={profileData.eats}
+          accessible
+          accessibilityLabel={`Profile of ${profileData.name}`}
+          accessibilityHint="Profile details include reviews and eats"
         />
-        {mockPosts.map((post) => (    
-        <Post
-          key={post.id}
-          user={post.user}
-          restaurant={post.restaurant}
-          cuisine={post.cuisine}
-          cost={post.cost}
-          rating={post.rating}
-          review={post.review}
-          imageUri={post.imageUri}
-          profilePicUri={post.profilePicUri}
-        />
-      ))}
-        <View style={{marginBottom: 20}}></View>
+        {mockPosts.map((post) => (
+          <Post
+            key={post.id}
+            user={post.user}
+            restaurant={post.restaurant}
+            cuisine={post.cuisine}
+            cost={post.cost}
+            rating={post.rating}
+            review={post.review}
+            imageUri={post.imageUri}
+            profilePicUri={post.profilePicUri}
+            accessible
+            accessibilityLabel={`Post about ${post.restaurant}`}
+            accessibilityHint={`Details about ${post.user}'s experience at ${post.restaurant}, tap to read more`}
+          />
+        ))}
+        <View style={{marginBottom: 20}} accessible accessibilityElementsHidden={true}></View>
       </ScrollView>
     </SafeAreaView>
   );

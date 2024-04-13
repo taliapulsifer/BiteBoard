@@ -13,7 +13,6 @@ const Post = ({ user, restaurant, cuisine, cost, rating, review, imageUri, profi
     setLiked(!liked);
   };
 
-  // Helper function to determine the source type
   const getImageSource = (image) => {
     if (typeof image === 'number') {
       return image;
@@ -22,22 +21,22 @@ const Post = ({ user, restaurant, cuisine, cost, rating, review, imageUri, profi
   };
 
   return (
-    <View style={styles.container} accessible accessibilityLabel={`Post by ${user}`}>
-          <TouchableOpacity
-          onPress={() => navigation.navigate('UserProfile', { username: user })}
-          accessible
-          accessibilityRole="button"
-          accessibilityLabel={`Navigate to ${user} profile`}
-        >  
-        <View style={styles.header}>      
-        <Image
-          source={getImageSource(profilePicUri)}
-          style={globalStyles.profilePic}
-          accessible
-          accessibilityLabel={`Profile picture of ${user}`}
-        />
-        <Text style={styles.username}>{user}</Text>
-      </View>
+    <View style={styles.container} accessible accessibilityLabel={`Post by ${user}, click for more details.`} accessibilityRole="adjustable">
+      <TouchableOpacity
+        onPress={() => navigation.navigate('UserProfile', { username: user })}
+        accessible
+        accessibilityRole="button"
+        accessibilityLabel={`Navigate to ${user}'s profile`}
+      >
+        <View style={styles.header}>
+          <Image
+            source={getImageSource(profilePicUri)}
+            style={globalStyles.profilePic}
+            accessible
+            accessibilityLabel={`Profile picture of ${user}`}
+          />
+          <Text style={styles.username}>{user}</Text>
+        </View>
       </TouchableOpacity>
       <Image
         source={getImageSource(imageUri)}
@@ -57,17 +56,17 @@ const Post = ({ user, restaurant, cuisine, cost, rating, review, imageUri, profi
             <Text style={globalStyles.headerText}>{restaurant.toUpperCase()}</Text>
           </View>
         </TouchableOpacity>
-        <Text style={globalStyles.infoSmall}>{review}</Text>
+        <Text style={globalStyles.infoSmall} accessible accessibilityLabel="Review">{review}</Text>
       </View>
       <View style={styles.actionContainer}>
         <View style={styles.categoryContainer}>
-          <Text style={styles.categoryTag}>{cuisine}</Text>
+          <Text style={styles.categoryTag} accessible accessibilityLabel={`Cuisine: ${cuisine}`}>{cuisine}</Text>
         </View>
         <View style={styles.categoryContainer}>
-          <Text style={styles.categoryTag}>{cost}</Text>
+          <Text style={styles.categoryTag} accessible accessibilityLabel={`Cost: ${cost}`}>{cost}</Text>
         </View>
         <View style={styles.categoryContainer}>
-          <Text style={styles.categoryTag}>{rating}</Text>
+          <Text style={styles.categoryTag} accessible accessibilityLabel={`Rating: ${rating} stars`}>{rating}</Text>
         </View>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
@@ -128,52 +127,34 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   restaurantContainer: {
-    alignContent: 'flex-start',
-    flexDirection: 'row',
-    gap: 10,
-  },
-  restaurant: {
-    fontFamily: 'PoppinsMedium',
-    color: colors.textPrimary,
-    fontSize: 20,
-  },
-  category: {
-    fontSize: 15,
-    color: colors.textPrimary,
-    marginBottom: 10,
-  },
-  likeButton: {
-    paddingHorizontal: 15,
-    paddingBottom: 15,
-  },
-  bookmarkButton: {
-    paddingHorizontal: 15,
-    paddingBottom: 15,
-  },
-  actionContainer: {
-    flexDirection: 'row',
-    alignItems: 'textAlign',
-    padding: 15,
-    justifyContent: 'space-between', // This aligns children to both ends
-  },
-  buttonsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end', // This ensures buttons are aligned to the right
-  },
-  infoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    gap: 10,  // Ensure there's visual space between the icon and the text
   },
   categoryTag: {
-    fontSize: 15, // Adjusted for better space management
+    fontSize: 15,
     fontFamily: 'Poppins',
     color: colors.accentPrimary,
     backgroundColor: colors.accentTertiary,
     borderRadius: 15,
     paddingVertical: 7,
     paddingHorizontal: 10,
-    margin: 0, // Ensure there's space around each tag
+    marginHorizontal: 5,  // Added horizontal margin for better spacing
+  },
+  likeButton: {
+    paddingHorizontal: 15,
+    paddingBottom: 15,
+  },
+  actionContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 15,
+    justifyContent: 'space-between',
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
 });
 
