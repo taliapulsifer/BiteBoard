@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // Make sure to install expo vector icons
+import { FontAwesome } from '@expo/vector-icons';
 import colors from '../../components/colors';
 import images from '../../assets/images/images'; 
 import globalStyles from '../../components/GlobalStyles';

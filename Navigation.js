@@ -38,7 +38,6 @@ function FeedStackGroup() {
     );
 }
 
-
 // Search: Instantiate the stack navigator
 const SearchStack = createNativeStackNavigator();
 
@@ -142,9 +141,9 @@ function TabGroup() {
                 options={{
                     tabBarIcon: () => (
                         <Octicons 
-                            name={"person"} // Use "person" for both focused and unfocused
+                            name={"person"}
                             size={26}
-                            color={"black"} // Change colors accordingly
+                            color={"black"} 
                         />
                     )
                 }}

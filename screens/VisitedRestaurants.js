@@ -9,7 +9,7 @@ export default function VisitedRestaurants() {
 
   const navigation = useNavigation();
   const restaurant = 'K-BOP';
-  const ratings = [1, 2, 3]; // Example static ratings data
+  const ratings = [1, 2, 3];
 
   return (
     <ScrollView 

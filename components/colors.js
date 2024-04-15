@@ -1,3 +1,5 @@
+// file for project color scheme
+
 const colors = {
   background: '#fff',
   textPrimary: '#000',

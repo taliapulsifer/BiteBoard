@@ -1,3 +1,5 @@
+// file for component styling that is used throughout the project
+
 import { StyleSheet } from 'react-native';
 import colors from './colors';
 
@@ -40,35 +42,35 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   infoTag: {
-    fontSize: 16, // Adjusted for better space management
+    fontSize: 16, 
     fontFamily: 'Poppins',
     color: colors.textPrimary,
     backgroundColor: colors.accentTertiary,
     borderRadius: 15,
     paddingVertical: 7,
     paddingHorizontal: 10,
-    margin: 5, // Ensure there's space around each tag
+    margin: 5, 
   },
   dietTag: {
-    fontSize: 16, // Adjusted for consistency
+    fontSize: 16,
     fontFamily: 'Poppins',
     color: 'white',
     backgroundColor: colors.accentSecondary,
     borderRadius: 15,
     paddingVertical: 7,
     paddingHorizontal: 10,
-    margin: 5, // Consistent margin for visual balance
-    textAlign: 'center', // This ensures text is centered within its container
+    margin: 5, 
+    textAlign: 'center',
   },
   accessibilityTag: {
-    fontSize: 16, // Adjusted for consistency
+    fontSize: 16,
     fontFamily: 'Poppins',
     color: 'white',
     backgroundColor: colors.accentPrimary,
     borderRadius: 15,
     paddingVertical: 7,
     paddingHorizontal: 10,
-    margin: 5, // Consistent margin for visual balance
+    margin: 5,
   },
   infoText: {
     fontFamily: 'Poppins',

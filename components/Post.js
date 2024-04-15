@@ -21,7 +21,7 @@ const Post = ({ user, restaurant, cuisine, cost, rating, review, imageUri, profi
   };
 
   return (
-    <View style={styles.container} accessible accessibilityLabel={`Post by ${user}, click for more details.`} accessibilityRole="adjustable">
+    <View style={styles.container} accessible accessibilityLabel={`Post by ${user}.`}>
       <TouchableOpacity
         onPress={() => navigation.navigate('UserProfile', { username: user })}
         accessible
